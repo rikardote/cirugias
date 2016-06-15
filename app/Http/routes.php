@@ -20,7 +20,7 @@ Route::get('/', function () {
     Route::resource('medicos', 'MedicosController');
     Route::get('medicos/{id}/destroy', [
         'uses' => 'MedicosController@destroy',
-        'as' => 'admin.medicos.destroy'
+        'as' => 'medicos.destroy'
     ]);
      // Rutas Medicos //
     Route::resource('anestesiologos', 'AnestesiologosController');
@@ -32,7 +32,7 @@ Route::get('/', function () {
     Route::resource('pacientes', 'PacientesController');
     Route::get('pacientes/{id}/destroy', [
         'uses' => 'PacientesController@destroy',
-        'as' => 'admin.pacientes.destroy'
+        'as' => 'pacientes.destroy'
     ]);
      // Rutas Cirugias //
     Route::resource('cirugias', 'CirugiasController');

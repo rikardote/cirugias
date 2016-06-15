@@ -14,6 +14,9 @@ class CreateAnestesiologosTable extends Migration
     {
         Schema::create('anestesiologos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombres', 60);
+            $table->string('apellido_pat', 60);
+            $table->string('apellido_mat', 60);
             $table->timestamps();
         });
     }
