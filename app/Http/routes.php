@@ -40,3 +40,7 @@ Route::get('/', function () {
         'uses' => 'CirugiasController@destroy',
         'as' => 'cirugias.destroy'
     ]);
+    Route::get('/getColonias', [
+        'uses' => 'PacientesController@autocomplete',
+        'as' => 'colonias.autocomplete'
+    ]);

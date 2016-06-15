@@ -16,7 +16,7 @@
     
    
     
-    <link rel="stylesheet" href="{{ asset('css/bootswatch/flatly.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootswatch/journal.css') }}">
 
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" href="{{ asset('css/themesolar.css') }}">
