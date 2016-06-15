@@ -34,13 +34,26 @@ Route::get('/', function () {
         'uses' => 'PacientesController@destroy',
         'as' => 'pacientes.destroy'
     ]);
+     // Rutas Pacientes //
+    Route::resource('pacientes', 'PacientesController');
+    Route::get('pacientes/{id}/destroy', [
+        'uses' => 'PacientesController@destroy',
+        'as' => 'pacientes.destroy'
+    ]);
      // Rutas Cirugias //
     Route::resource('cirugias', 'CirugiasController');
     Route::get('cirugias/{id}/destroy', [
         'uses' => 'CirugiasController@destroy',
         'as' => 'cirugias.destroy'
     ]);
+    // Colonias Autocomplete
     Route::get('/getColonias', [
         'uses' => 'PacientesController@autocomplete',
         'as' => 'colonias.autocomplete'
+    ]);
+    // Rutas Programacion de cirugias //
+    Route::resource('programar_cirugia', 'ProgramacionController');
+    Route::get('programar_cirugia/{id}/destroy', [
+        'uses' => 'ProgramacionController@destroy',
+        'as' => 'programar_cirugia.destroy'
     ]);

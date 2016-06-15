@@ -24,12 +24,11 @@
                
                 <ul class="nav navbar-nav">
                     <li class="dropdown {{ Request::segment(1) === 'agenda' || Request::segment(1) === 'citas' ? 'active' : null  }}">
-                            <a href="/"> Cirugias   </a>
+                            <a href="{{route('programar_cirugia.index')}}"> Programar Cirugias   </a>
                     </li>
                    
                      <li class="dropdown 
-                        {{ Request::segment(1) === 'medicos' || Request::segment(2) === 'permisos' || 
-                            Request::segment(1) === 'especialidades' || Request::segment(1) === 'horarios' ? 'active' : null  }}">
+                        {{  Request::segment(1) === 'medicos' ? 'active' : null  }}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Medicos <span class="caret"></span>
                             </a>
@@ -42,6 +41,14 @@
 
                     <li class="{{ Request::segment(1) === 'pacientes' ? 'active' : null  }}">
                             <a href="{{route('pacientes.index')}}">Pacientes </a>
+                            
+                    </li>
+                     <li class="{{ Request::segment(1) === 'anestesiologos' ? 'active' : null  }}">
+                            <a href="{{route('anestesiologos.index')}}">Anestesiologos </a>
+                            
+                    </li>
+                     <li class="{{ Request::segment(1) === 'cirugias' ? 'active' : null  }}">
+                            <a href="{{route('cirugias.index')}}">Cirugias </a>
                             
                     </li>
                     <li class="dropdown {{ Request::segment(1) === 'reportes' ? 'active' : null }}">
