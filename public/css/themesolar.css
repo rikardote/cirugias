@@ -29,6 +29,9 @@ a:hover, a:visited, a:link, a:active{
     width: 1400px;
   }
 }
+.test{
+  -fs-table-paginate: paginate;
+}
 tr.border_bottom td {
   border-bottom-style: double; 
   border-bottom-width: 1px;
