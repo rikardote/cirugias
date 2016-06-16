@@ -9,7 +9,6 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/jquery-bootstrap-datepicker.css') }}">
@@ -20,11 +19,10 @@
 
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" href="{{ asset('css/themesolar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datetextentry/datetextentry.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/timepicker/jquery.timepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/chosen-bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+
     @yield('css')
     
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
