@@ -2,7 +2,17 @@
 
 @section('title', 'Programar Cirugias')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/flotante.css') }}">
+@endsection
+
 @section('content')
+		<div class="social">
+     	<ul>
+            <li><a href="{{route('reportes.diarias.pdf', [$date])}}" class="icon-pdf"><i class="fa fa-file-pdf-o fa-2x "></i></a></li>
+        </ul>
+    </div>
+
 	<div class="col-md-4">
 	    <div id="datepicker" id="depart"></div>
 	</div>
@@ -32,8 +42,8 @@
 											<td class='font-small'>{{$cirugia->horario}}</td>
 											<td class='font-small'>{{ ($cirugia->sala==4) ? 'Ext':$cirugia->sala }}</td>
 											<td class='font-small'>{{$cirugia->paciente->fullname}} <br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}} {{getEdad($cirugia->paciente->fecha_nacimiento)}} AÑOS<br> {{$cirugia->medico->fullname}}</td>
-											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}}</td>
-										
+											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}} <br> <small><a href="">Realizada</a> | <a href="">Reprogramada</a> | <a href="">Cancelada</a></small></td>
+
 										</tr>
 
 									@endforeach

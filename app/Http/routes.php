@@ -68,4 +68,8 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'SearchPacientesController@index',
         'as' => 'pacientes.search'
     ]);
+    Route::get('programar_cirugia/{date}/pdf', [
+        'uses' => 'ProgramacionController@pdf',
+        'as' => 'reportes.diarias.pdf'
+    ]);
 });

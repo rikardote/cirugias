@@ -29,6 +29,11 @@ a:hover, a:visited, a:link, a:active{
     width: 1400px;
   }
 }
+tr.border_bottom td {
+  border-bottom-style: dotted; 
+  border-bottom-width: 3px;
+  border-bottom:1pt solid black;
+}
 footer { 
   position: absolute;
   right: 0;

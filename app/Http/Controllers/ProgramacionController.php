@@ -8,16 +8,16 @@ use App\Http\Requests;
 use App\Http\Requests\SurgeryRequests;
 use Carbon\Carbon;
 use App\Surgery;
-use Vsmoraes\Pdf\Pdf;
+use \mPDF;
 
 class ProgramacionController extends Controller
 {
-    private $pdf;
-    public function __construct(Pdf $pdf)
+   
+    public function __construct()
     {
         $this->middleware('auth');
         setlocale(LC_ALL,"es_MX.utf8");
-        $this->pdf = $pdf;
+        
     }
 
     public function index()
@@ -53,6 +53,34 @@ class ProgramacionController extends Controller
     	$surgery->save();
 
     	return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
+    }
+    public function pdf($date)
+    {
+        $date = fecha_ymd($date);  
+        $cirugias = Surgery::orderBy('horario', 'asc')->orderBy('sala', 'asc')->where('fecha', '=', $date)->get();
+        
+        $cirugias->each(function($cirugias) {
+            $cirugias->paciente;
+            $cirugias->cirugia;
+            $cirugias->medico;
+            $cirugias->anestesiologo;
+        });
+
+        //
+        
+        $mpdf = new mPDF('', 'Letter');
+        $header = \View('reportes.header')->with('date', $date)->render();
+        $mpdf->SetFooter('Generado el: {DATE j-m-Y}| AgendaElectronica | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
+        $html =  \View('reportes.diarias')->with('cirugias', $cirugias)->with('date', $date)->render();
+        $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
+        $mpdf->setAutoTopMargin = 'stretch';
+        $mpdf->setAutoBottomMargin = 'stretch';
+        $mpdf->setHTMLHeader($header);
+        $mpdf->SetDisplayMode('fullpage');
+        $mpdf->WriteHTML($html);
+   
+        $mpdf->Output($pdfFilePath, "I"); //D
+        
     }
 
 }
