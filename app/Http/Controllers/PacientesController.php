@@ -92,4 +92,5 @@ class PacientesController extends Controller
         
         return Response::json($return_array);
     }
+  
 }

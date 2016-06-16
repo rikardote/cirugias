@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Surgery extends Model
 {
-    protected $fillable = ['fecha', 'sala', 'paciente_id', 'medico_id', 'anestesiologo_id', 'cirugia_id', 'horario'];
+    protected $fillable = ['fecha', 'sala', 'paciente_id', 'medico_id', 'anestesiologo_id', 'cirugia_id', 'horario', 'ubicacion'];
 
 	protected $table = 'surgerys';
     

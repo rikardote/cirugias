@@ -20,7 +20,7 @@
 			<tr>
 				<td class='font-small' valign=top>{{$cirugia->horario}}</td>
 				<td class='font-small' valign=top>{{ ($cirugia->sala==4) ? 'Ext':$cirugia->sala }}</td>
-				<td class='font-small'>{{$cirugia->paciente->fullname}} <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}} {{getEdad($cirugia->paciente->fecha_nacimiento)}} AÑOS<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cirugia->medico->fullname}}</td>
+				<td class='font-small'>{{$cirugia->paciente->fullname}} <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}} {{getEdad($cirugia->paciente->fecha_nacimiento)}} AÑOS  ({{$cirugia->ubicacion}})<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cirugia->medico->fullname}}</td>
 				<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}} </td>
 			</tr>
 

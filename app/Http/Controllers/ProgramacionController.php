@@ -82,5 +82,14 @@ class ProgramacionController extends Controller
         $mpdf->Output($pdfFilePath, "I"); //D
         
     }
+    public function realizada($id)
+    {
+        $cirugia = Surgery::find($id);
+        $cirugia->cirugia;
+        $procedimientos = Cirugia::all()->lists('name', 'id')->toArray();
+            asort($procedimientos);
+
+        return view('programar_cirugia.form_realizada')->with('cirugia', $cirugia)->with('procedimientos', $procedimientos);
+    }
 
 }
