@@ -10,12 +10,14 @@
    <table class="table table-condensed">
     <thead>
         <th>Nombre</th>
+        <th>Especialidad</th>
         <th>Accion</th>
     </thead>
     <tbody>
     @foreach($medicos as $medico)
         <tr>
          <td>{{ $medico->apellido_pat }} {{ $medico->apellido_mat }} {{ $medico->nombres }}</td>
+         <td>{{ $medico->especialidad->name }}</td>
          <td>
             <a data-url="{{ route('medicos.edit', $medico->id) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
                <span class="fa fa-pencil-square-o fa-2x" aria-hidden='true'></span>

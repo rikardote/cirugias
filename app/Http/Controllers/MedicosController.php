@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MedicosRequest;
 
 use App\Medico;
+use App\Especialidad;
 
 use Laracasts\Flash\Flash;
 
@@ -24,6 +25,9 @@ class MedicosController extends Controller
     {	
        
     	$medicos = Medico::orderBy('apellido_pat', 'ASC')->get();
+        $medicos->each(function($medicos) {
+              $medicos->especialidad;
+        });
 
            
     	return view('medicos.index')->with('medicos', $medicos);
@@ -31,16 +35,23 @@ class MedicosController extends Controller
 
     public function create()
     {
-    	return view('medicos.createorupdate');
+        $especialidades = Especialidad::all()->lists('name', 'id')->toArray();
+        asort($especialidades);
+    	return view('medicos.createorupdate')->with('especialidades', $especialidades);
         	
     }
  
     public function edit($id)
     {
         $medico = Medico::find($id);
+        $medico->especialidad;
+
+        $especialidades = Especialidad::all()->lists('name', 'id')->toArray();
+        asort($especialidades);
         
         return view('medicos.createorupdate')
-            ->with('medico', $medico);
+            ->with('medico', $medico)
+            ->with('especialidades', $especialidades);
         
         
     }

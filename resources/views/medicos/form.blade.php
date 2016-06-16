@@ -28,3 +28,11 @@
 		'required'
 	]) !!}
 </div>
+<div class="form-group">
+	{!! Form::label('especialidad_id', 'Especialidades') !!}
+	{!! Form::select('especialidad_id', $especialidades, null, [
+    'class' => 'form-control',
+    'placeholder' => 'Selecciona una especialidad', 
+    'required'
+  ]) !!}
+</div>

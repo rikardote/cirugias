@@ -23,6 +23,12 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MedicosController@destroy',
         'as' => 'medicos.destroy'
     ]);
+    // Rutas Especialidades //
+    Route::resource('especialidades', 'EspecialidadesController');
+    Route::get('especialidades/{id}/destroy', [
+        'uses' => 'EspecialidadesController@destroy',
+        'as' => 'especialidades.destroy'
+    ]);
      // Rutas Medicos //
     Route::resource('anestesiologos', 'AnestesiologosController');
     Route::get('anestesiologos/{id}/destroy', [

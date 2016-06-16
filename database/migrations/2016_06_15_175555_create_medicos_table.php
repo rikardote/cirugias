@@ -17,7 +17,9 @@ class CreateMedicosTable extends Migration
             $table->string('nombres', 60);
             $table->string('apellido_pat', 60);
             $table->string('apellido_mat', 60);
+            $table->integer('especialidad_id')->unsigned();
             $table->timestamps();
+            $table->foreign('especialidad_id')->references('id')->on('especialidades');
         });
     }
 

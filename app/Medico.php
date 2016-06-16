@@ -10,7 +10,7 @@ class Medico extends Model
 
      protected $table = 'medicos';
 
-     protected $fillable = ['nombres', 'apellido_pat', 'apellido_mat'];
+     protected $fillable = ['nombres', 'apellido_pat', 'apellido_mat', 'especialidad_id'];
 
 
 
@@ -31,6 +31,10 @@ class Medico extends Model
     public function getFullnameAttribute() {
         return $this->apellido_pat . ' ' . $this->apellido_mat. ' ' . $this->nombres;
     
+    }
+        public function especialidad()
+    {
+        return $this->belongsTo('App\Especialidad');
     }
 
 }
