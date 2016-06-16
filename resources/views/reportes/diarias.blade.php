@@ -6,11 +6,11 @@
 </head>
 <body>
 <table  border="0" cellpadding="5" cellspacing="2" style="width:100%;">
-	<tr style="border-bottom:1pt solid green;">
-		<th>HORA</th>
-		<th>SALA</th>
-		<th>PACIENTE</th>
-		<th>CIRUGIA</th>
+	<tr>
+		<th align="left">HORA</th>
+		<th align="left">SALA</th>
+		<th align="left">PACIENTE</th>
+		<th align="left">CIRUGIA</th>
 	</tr>	
 		@foreach($cirugias as $cirugia)
 			
