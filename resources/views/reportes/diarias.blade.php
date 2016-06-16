@@ -6,12 +6,15 @@
 </head>
 <body>
 <table class="test" border="1" cellpadding="5" cellspacing="0" style="width:100%;">
+	<thead>
 	<tr>
 		<th align="left">HORA</th>
 		<th align="left">SALA</th>
 		<th align="left">PACIENTE</th>
 		<th align="left">CIRUGIA</th>
 	</tr>	
+	</thead>
+	<tbody>
 		@foreach($cirugias as $cirugia)
 			
 			<tr>
@@ -22,7 +25,7 @@
 			</tr>
 
 		@endforeach
-	
+	</tbody>
 </table>
 </body>
 </html>
