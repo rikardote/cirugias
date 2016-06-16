@@ -30,9 +30,10 @@ a:hover, a:visited, a:link, a:active{
   }
 }
 tr.border_bottom td {
-  border-bottom-style: dotted; 
+  border-bottom-style: double; 
   border-bottom-width: 1px;
-  border-bottom:1pt solid black;
+  
+  thin single black collapse
 }
 footer { 
   position: absolute;
