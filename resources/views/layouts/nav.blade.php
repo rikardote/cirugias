@@ -30,7 +30,7 @@
                      
                                     
                      <li class="dropdown 
-                        {{ Request::segment(1) === 'medicos' || 
+                        {{ Request::segment(1) === 'medicos' || Request::segment(1) === 'anestesiologos' || 
                             Request::segment(1) === 'especialidades'  ? 'active' : null  }}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Medicos <span class="caret"></span>
@@ -39,6 +39,10 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li class="{{ Request::segment(1) === 'medicos' ? 'active' : null  }}"><a href="{{route('medicos.index')}}">Consultar Medicos</a></li>
                                 <li class="{{ Request::segment(1) === 'especialidades' ? 'active' : null  }}"><a href="{{route('especialidades.index')}}">Especialidades</a></li>
+                                <li class="{{ Request::segment(1) === 'anestesiologos' ? 'active' : null  }}">
+                            <a href="{{route('anestesiologos.index')}}">Anestesiologos </a>
+                            
+                    </li>
                             </ul>
                         </li>
 
@@ -46,10 +50,7 @@
                             <a href="{{route('pacientes.index')}}">Pacientes </a>
                             
                     </li>
-                     <li class="{{ Request::segment(1) === 'anestesiologos' ? 'active' : null  }}">
-                            <a href="{{route('anestesiologos.index')}}">Anestesiologos </a>
-                            
-                    </li>
+                     
                      <li class="{{ Request::segment(1) === 'cirugias' ? 'active' : null  }}">
                             <a href="{{route('cirugias.index')}}">Cirugias </a>
                             
