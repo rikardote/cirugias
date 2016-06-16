@@ -49,7 +49,7 @@
 	@foreach($pacientes as $paciente)
 		 <script>
 			$('#{{$paciente->rfc.$paciente->id}}').timepicker({ 
-				'step': 60,
+				'step': 30,
 				'minTime': '7am',
           		'maxTime': '6pm',
 			    'timeFormat': 'H:i',

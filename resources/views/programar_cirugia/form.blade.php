@@ -39,7 +39,7 @@
 	{!! Form::label('cirugia_id', 'Cirugia') !!}
 	{!! Form::select('cirugia_id', $cirugias, null, [
     'class' => 'form-control',
-    'placeholder' => 'Selecciona un Anestesiologo', 
+    'placeholder' => 'Selecciona un procedimiento', 
     'required'
   ]) !!}
 </div>
