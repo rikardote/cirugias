@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="{{ asset('css/themesolar.css') }}">
 </head>
 <body>
-<table class="test" border="1" cellpadding="5" cellspacing="0" style="width:100%;">
+<table border="1" cellpadding="5" cellspacing="0" style="width:100%;">
 	<thead>
 	<tr>
 		<th align="left">HORA</th>
