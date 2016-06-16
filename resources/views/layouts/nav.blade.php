@@ -23,21 +23,15 @@
                 <!-- Left Side Of Navbar -->
                
                 <ul class="nav navbar-nav">
-                    <li class="dropdown {{ Request::segment(1) === 'agenda' || Request::segment(1) === 'citas' ? 'active' : null  }}">
+                    <li class="dropdown {{ Request::segment(1) === 'programar_cirugia' || Request::segment(1) === 'citas' ? 'active' : null  }}">
                             <a href="{{route('programar_cirugia.index')}}"> Programar Cirugias   </a>
                     </li>
                    
-                     <li class="dropdown 
-                        {{  Request::segment(1) === 'medicos' ? 'active' : null  }}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Medicos <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li class="{{ Request::segment(1) === 'medicos' ? 'active' : null  }}"><a href="{{route('medicos.index')}}">Consultar Medicos</a></li>
-                                
-                            </ul>
-                        </li>
+                     
+                    <li class="{{ Request::segment(1) === 'medicos' ? 'active' : null  }}">
+                            <a href="{{route('medicos.index')}}">Medicos </a>
+                            
+                    </li>
 
                     <li class="{{ Request::segment(1) === 'pacientes' ? 'active' : null  }}">
                             <a href="{{route('pacientes.index')}}">Pacientes </a>
@@ -63,10 +57,36 @@
                     
                 </ul>
 
-                <!-- Right Side Of Navbar -->
+                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    
+                    @if (Auth::guest())
+                       
+                            <li><a href="{{ url('/login') }}">Login</a></li>
+       
+                        <li><a href="{{ url('/register') }}">Registrar</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                
+                                    <li>
+                                        <a href="{{ url('/themes') }}"><i class="fa fa-btn fa fa-cog"></i>Cambiar Tema</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/registrar') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Usuarios</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/registrar_medicos') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Medicos</a>
+                                    </li>
+                             
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
+                            </ul>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

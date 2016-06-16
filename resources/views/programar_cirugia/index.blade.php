@@ -27,7 +27,7 @@
 								</thead>	
 								<tbody>
 									@foreach($cirugias as $cirugia)
-										<small>
+										
 										<tr>
 											<td class='font-small'>{{$cirugia->horario}}</td>
 											<td class='font-small'>{{ ($cirugia->sala==4) ? 'Ext':$cirugia->sala }}</td>

@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/', function () {
+    return redirect()->route('programar_cirugia.index'); 
     
-
 });
- // Rutas Medicos //
+     // Rutas Medicos //
     Route::resource('medicos', 'MedicosController');
     Route::get('medicos/{id}/destroy', [
         'uses' => 'MedicosController@destroy',
@@ -67,4 +68,4 @@ Route::get('/', function () {
         'uses' => 'SearchPacientesController@index',
         'as' => 'pacientes.search'
     ]);
-
+});

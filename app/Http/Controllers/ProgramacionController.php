@@ -8,9 +8,18 @@ use App\Http\Requests;
 use App\Http\Requests\SurgeryRequests;
 use Carbon\Carbon;
 use App\Surgery;
+use Vsmoraes\Pdf\Pdf;
 
 class ProgramacionController extends Controller
 {
+    private $pdf;
+    public function __construct(Pdf $pdf)
+    {
+        $this->middleware('auth');
+        setlocale(LC_ALL,"es_MX.utf8");
+        $this->pdf = $pdf;
+    }
+
     public function index()
     {
     	if (isset($_GET["date"])) {
