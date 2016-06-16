@@ -34,6 +34,7 @@ Route::get('/', function () {
         'uses' => 'PacientesController@destroy',
         'as' => 'pacientes.destroy'
     ]);
+
      // Rutas Pacientes //
     Route::resource('pacientes', 'PacientesController');
     Route::get('pacientes/{id}/destroy', [
@@ -52,8 +53,18 @@ Route::get('/', function () {
         'as' => 'colonias.autocomplete'
     ]);
     // Rutas Programacion de cirugias //
-    Route::resource('programar_cirugia', 'ProgramacionController');
+    Route::resource('programar_cirugia', 'ProgramacionController',
+         ['except' => ['destroy']]);
     Route::get('programar_cirugia/{id}/destroy', [
         'uses' => 'ProgramacionController@destroy',
         'as' => 'programar_cirugia.destroy'
     ]);
+    Route::get('programar_cirugia/{date}/nueva', [
+        'uses' => 'ProgramacionController@nueva',
+        'as' => 'programar_cirugia.nueva'
+    ]);
+    Route::get('programar_cirugia/{date}/paciente', [
+        'uses' => 'SearchPacientesController@index',
+        'as' => 'pacientes.search'
+    ]);
+

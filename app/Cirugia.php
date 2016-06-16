@@ -12,4 +12,5 @@ class Cirugia extends Model
     {
         $this->attributes['name'] = strtoupper($value);
     }
+    
 }

@@ -20,7 +20,15 @@ a:hover, a:visited, a:link, a:active{
 {
     list-style-type: none!important;
 }
+.font-small {
+  font-size: small;
+}
 
+@media (min-width: 1200px) {
+  .container {
+    width: 1400px;
+  }
+}
 footer { 
   position: absolute;
   right: 0;

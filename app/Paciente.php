@@ -45,4 +45,5 @@ class Paciente extends Model
     {
         return $this->belongsTo('App\Colonia');
     }
+    
 }
