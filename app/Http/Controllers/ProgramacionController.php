@@ -70,7 +70,7 @@ class ProgramacionController extends Controller
         
         $mpdf = new mPDF('', 'Letter');
         $header = \View('reportes.header')->with('date', $date)->render();
-        $mpdf->SetFooter('Generado el: {DATE j-m-Y}| AgendaElectronica | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
+        $mpdf->SetFooter('Generado el: {DATE j-m-Y}| Programacion de Cirugias | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
         $html =  \View('reportes.diarias')->with('cirugias', $cirugias)->with('date', $date)->render();
         $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
         $mpdf->setAutoTopMargin = 'stretch';
