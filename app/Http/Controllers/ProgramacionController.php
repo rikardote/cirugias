@@ -69,6 +69,14 @@ class ProgramacionController extends Controller
         return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
     }
 
+    public function destroy($id)
+    {
+        $surgery = Surgery::find($id);
+        $surgery->delete();
+
+        return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
+    }
+
     public function pdf($date)
     {
         $date = fecha_ymd($date);  
