@@ -178,3 +178,17 @@ td.ui-datepicker-week-end {
     margin-bottom: 21px;
     border: 1px solid transparent;
 }
+
+.row {
+    position: relative;
+  }
+  
+  .hover-btn {
+     position: absolute;
+      right: 15px;
+      display: none;
+    }
+    
+    .row:hover .hover-btn {
+          display: block;
+        }

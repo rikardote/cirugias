@@ -1,4 +1,6 @@
-{!! Form::model($cirugia, ['route' => ['programar_cirugia.update', $cirugia->id], 'method' => 'PATCH']) !!}
+<p>Paciente: {{$surgery->paciente->fullname}}</p>
+<p>Sala: {{$surgery->sala}}, Cirugia Proyectada: {{$surgery->cirugia->name}}</p>
+{!! Form::model($surgery, ['route' => ['programar_cirugia.update', $surgery->id], 'method' => 'PATCH']) !!}
 	<div class="form-group">
 	{!! Form::label('tiempo_qx', 'Tiempo de QX. Proyectado') !!}
 	{!! Form::text('tiempo_qx', null, [
@@ -6,10 +8,9 @@
 	]) !!}
 	</div>
 	<div class="form-group">
-		{!! Form::label('hora_inicial', 'Horario inicial') !!}
-		
-		{!! Form::text('hora_final', null, [
-			'id' => 'horario',
+		{!! Form::label('hora_inicio', 'Horario inicial') !!}
+		{!! Form::text('hora_inicio', null, [
+			'id' => 'hora_inicio',
 			'class' => 'form-control',
 			'placeholder' => 'Ingresa un horario', 
 			'required'
@@ -27,8 +28,8 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('cirugia_realizada', 'Cirugia') !!}
-		{!! Form::select('cirugia_realizada', $procedimientos, $cirugia->cirugia_id, [
+		{!! Form::label('cirugia_realizada', 'Cirugia Realizada') !!}
+		{!! Form::select('cirugia_realizada', $procedimientos, $surgery->cirugia_id, [
     	'class' => 'form-control',
     	'placeholder' => 'Selecciona un procedimiento', 
     	'required'
@@ -48,7 +49,7 @@
 {!! Form::close()!!}
 
 <script>
-	$('#horario').timepicker({ 
+	$('#hora_inicio').timepicker({ 
 		'step': 30,
 		'minTime': '7am',
         'maxTime': '6pm',

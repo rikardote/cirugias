@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\SurgeryRequests;
 use Carbon\Carbon;
 use App\Surgery;
+use App\Cirugia;
 use \mPDF;
 
 class ProgramacionController extends Controller
@@ -54,6 +55,20 @@ class ProgramacionController extends Controller
 
     	return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
     }
+
+    public function update(Request $request , $id)
+    {
+        $surgery = Surgery::find($id);
+        $surgery->cirugia_realizada = $request->cirugia_realizada;
+        $surgery->tiempo_qx = $request->tiempo_qx;
+        $surgery->hora_inicio = $request->hora_inicio;
+        $surgery->hora_final = $request->hora_final;
+        $surgery->observaciones = $request->observaciones;
+        $surgery->save();
+
+        return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
+    }
+
     public function pdf($date)
     {
         $date = fecha_ymd($date);  
@@ -84,12 +99,33 @@ class ProgramacionController extends Controller
     }
     public function realizada($id)
     {
-        $cirugia = Surgery::find($id);
-        $cirugia->cirugia;
+        $surgery = Surgery::find($id);
+        $surgery->cirugia;
+        $surgery->paciente;
+        $surgery->medico;
+        $surgery->anestesiologo;
         $procedimientos = Cirugia::all()->lists('name', 'id')->toArray();
-            asort($procedimientos);
+        asort($procedimientos);
 
-        return view('programar_cirugia.form_realizada')->with('cirugia', $cirugia)->with('procedimientos', $procedimientos);
+        return view('programar_cirugia.form_realizada')->with('surgery', $surgery)->with('procedimientos', $procedimientos);
+    }
+    public function reporte_semanal()
+    {
+        return view('reportes.semanal');
     }
 
+    public function reporte_semanal_pdf(Request $request)
+    {
+        $fecha_inicio = fecha_ymd($request->fecha_inicio);
+        $fecha_final = fecha_ymd($request->fecha_final);
+        $surgerys = Surgery::whereBetween('fecha',[$fecha_inicio,$fecha_final])->orderBy('fecha', 'ASC')->get();
+        $surgerys->each(function($surgerys) {
+            $surgerys->paciente;
+            $surgerys->cirugia;
+            $surgerys->medico;
+            $surgerys->anestesiologo;
+        });
+
+        return view('reportes.semanal_show')->with('surgerys', $surgerys);
+    }
 }

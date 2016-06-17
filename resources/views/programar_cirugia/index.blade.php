@@ -13,6 +13,8 @@
         </ul>
     </div>
 
+	<div class="row">
+
 	<div class="col-md-4">
 	    <div id="datepicker" id="depart"></div>
 	</div>
@@ -44,6 +46,9 @@
 											<td class='font-small'>{{$cirugia->paciente->fullname}} <br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}} {{getEdad($cirugia->paciente->fecha_nacimiento)}} AÑOS  ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}</td>
 											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}} <br> 
 											<small><a data-url="{{ route('cirugia.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Realizada</a> | <a href="">Reprogramada</a> | <a href="">Cancelada</a></small></td>
+											<td class="hover-btn">
+									     <a href="#" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+									  </td>										
 										</tr>
 
 									@endforeach
@@ -52,9 +57,10 @@
 						
 				</div>
 			</div>
+		
 		</div>
-	@include('partials.form-modal', ['title'=>'Cirugia para el: '.fecha_dmy($date)])
-  
+</div>  
+@include('partials.form-modal', ['title'=>'Cirugia para el: '.fecha_dmy($date)])
 @endsection
 @section('js')
  <script>

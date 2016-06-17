@@ -61,7 +61,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Reporte Diario de Citas</a></li>
+                            <li><a href="{{route('reportes.semanal')}}">Reporte Semanal</a></li>
                         </ul>
                     </li>
                     

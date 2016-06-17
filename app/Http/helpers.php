@@ -1,5 +1,5 @@
 <?php 
-use App\Cita;
+use App\Cirugia;
 use Carbon\Carbon;
 function fecha_ymd($date){
 	return date('Y-m-d', strtotime(str_replace('/', '-', $date)));
@@ -54,4 +54,10 @@ function checkExpire($cita_date)
     return true;
   }
   
+}
+function getCirugia($cirugia_realizada)
+{
+  $c_realizada = Cirugia::find($cirugia_realizada);
+  
+  return $c_realizada->name;
 }
