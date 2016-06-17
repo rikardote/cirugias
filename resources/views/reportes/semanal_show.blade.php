@@ -16,6 +16,7 @@
 				<td>Hora Real</td>
 				<td>Cirugia realizada</td>
 				<td>Hora Final</td>
+				<td>Observaciones</td>
 			</thead>
 		</tr>
 		<tbody>
@@ -27,8 +28,9 @@
 					<td>{{$surgery->medico->fullname}}</td>
 					<td>{{$surgery->anestesiologo->fullname}}</td>
 					<td>{{$surgery->hora_inicio}}</td>
-					<td>{{ getCirugia($surgery->cirugia_realizada) }}</td>
+					<td>{{($surgery->cirugia_id == $surgery->cirugia_realizada) ? $surgery->cirugia->name : getCirugia($surgery->cirugia_realizada)  }}</td>
 					<td>{{$surgery->hora_final}}</td>
+					<td>{{$surgery->observaciones}}</td>
 				</tr>
 			@endforeach
 		</tbody>

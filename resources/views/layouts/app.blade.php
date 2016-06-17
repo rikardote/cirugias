@@ -37,10 +37,10 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">@yield('title')</div>
                         <div class="panel-body">
-
+                            @include('flash::message')
                            
                             @yield('content')
-                        </div>
+                </div>
                     </div>
                 </div>
             </div>
