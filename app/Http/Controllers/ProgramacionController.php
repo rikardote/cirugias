@@ -136,7 +136,7 @@ class ProgramacionController extends Controller
             $surgerys->anestesiologo;
         });
         $mpdf = new mPDF('', 'Legal-L');
-        $header = \View('reportes.header_semanal')->with('date', $fecha_inicio)->render();
+        $header = \View('reportes.header_semanal')->with('date', $fecha_inicio)->with('date2', $fecha_final)->render();
         $mpdf->SetFooter('Generado el: {DATE j-m-Y}| Programacion de Cirugias | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
         $html =  \View('reportes.semanal_show')->with('surgerys', $surgerys)->with('date', $date)->render();
         $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
