@@ -90,4 +90,12 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ProgramacionController@realizada',
         'as' => 'cirugia.realizada'
     ]);
+    Route::get('programar_cirugia/{id}/reprogramar', [
+        'uses' => 'ProgramacionController@reprogramar',
+        'as' => 'cirugia.reprogramar'
+    ]);
+    Route::get('programar_cirugia/{id}/suspender', [
+        'uses' => 'ProgramacionController@suspender',
+        'as' => 'cirugia.suspender'
+    ]);
 });

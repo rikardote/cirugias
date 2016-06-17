@@ -9,6 +9,9 @@ use App\Http\Requests\SurgeryRequests;
 use Carbon\Carbon;
 use App\Surgery;
 use App\Cirugia;
+use App\Medico;
+use App\Anestesiologo;
+
 use \mPDF;
 use Laracasts\Flash\Flash;
 
@@ -147,7 +150,36 @@ class ProgramacionController extends Controller
         $mpdf->WriteHTML($html);
    
         $mpdf->Output($pdfFilePath, "I"); //D
+    
+    }
 
-        //return view('reportes.semanal_show')->with('surgerys', $surgerys);
+    public function reprogramar($id)
+    {   
+        $surgery = Surgery::find($id);
+        $surgery->cirugia;
+        $surgery->paciente;
+        $surgery->medico;
+        $surgery->anestesiologo;
+        $medicos = Medico::all()->lists('fullname', 'id')->toArray();
+        asort($medicos);
+
+        $anestesiologos = Anestesiologo::all()->lists('fullname', 'id')->toArray();
+        asort($anestesiologos);
+
+        $cirugias = Cirugia::all()->lists('name', 'id')->toArray();
+        asort($cirugias);
+
+        return view('programar_cirugia.reprogramar')
+                ->with('surgery', $surgery)
+                ->with('medicos', $medicos)
+                ->with('anestesiologos', $anestesiologos)
+                ->with('cirugias', $cirugias);
+
+        //return view('programar_cirugia.reprogramar')->with('surgery', $surgery);
+    }
+
+    public function suspender($id)
+    {
+
     }
 }
