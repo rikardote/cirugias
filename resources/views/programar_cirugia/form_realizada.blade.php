@@ -3,8 +3,9 @@
 {!! Form::model($surgery, ['route' => ['programar_cirugia.update', $surgery->id], 'method' => 'PATCH']) !!}
 	<div class="form-group">
 	{!! Form::label('tiempo_qx', 'Tiempo de QX. Proyectado') !!}
-	{!! Form::text('tiempo_qx', null, [
-		'class' => 'form-control'
+	{!! Form::number('tiempo_qx', null, [
+		'class' => 'form-control',
+		'required'
 	]) !!}
 	</div>
 	<div class="form-group">

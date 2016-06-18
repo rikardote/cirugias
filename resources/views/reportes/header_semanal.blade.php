@@ -10,7 +10,7 @@
 			<td align='right'>
 			<p><h2><strong>HOSPITAL GENERAL 5 DE DICIEMBRE</strong></h2></p>
 
-			<p><h3><strong>PROGRAMACION DE CIRUGIAS</strong></h3></p>
+			<p><h3><strong>REPORTE DE CIRUGIAS</strong></h3></p>
 
 					
 			

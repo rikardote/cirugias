@@ -178,8 +178,18 @@ class ProgramacionController extends Controller
         //return view('programar_cirugia.reprogramar')->with('surgery', $surgery);
     }
 
-    public function suspender($id)
+    public function reprogramar_update_store(SurgeryRequests $request, $id)
     {
+        $cirugia = Surgery::find($id);
+        $cirugia->reprogramada = 1;
+        $cirugia->observaciones = $request->observaciones;
+        $cirugia->save();
 
+        $surgery = new Surgery($request->all());
+        $surgery->fecha = fecha_ymd($request->fecha);
+        $surgery->observaciones = "";
+        $surgery->save();
+
+        return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
     }
 }

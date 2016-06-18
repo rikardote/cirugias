@@ -94,6 +94,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ProgramacionController@reprogramar',
         'as' => 'cirugia.reprogramar'
     ]);
+    Route::post('programar_cirugia/{id}/reprogramar/update/store', [
+        'uses' => 'ProgramacionController@reprogramar_update_store',
+        'as' => 'reprogramar_cirugia.r_u_e'
+    ]);
     Route::get('programar_cirugia/{id}/suspender', [
         'uses' => 'ProgramacionController@suspender',
         'as' => 'cirugia.suspender'
