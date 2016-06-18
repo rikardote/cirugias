@@ -1,4 +1,3 @@
-
 <div class="form-group">
 	{!! Form::label('fecha', 'Fecha') !!}
 	{!! Form::text('fecha', fecha_dmy($date), [
@@ -58,4 +57,9 @@
     'required'
   ]) !!}
 </div>
+<div class="form-group">
+	{!! Form::label('urgencias', 'Urgencia?') !!}
+	{!!Form::checkbox('urgencias', 1);	 !!}
+</div>
+
 {{ Form::hidden('paciente_id', $paciente->id) }}

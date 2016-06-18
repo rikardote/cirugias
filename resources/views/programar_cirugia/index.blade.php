@@ -39,10 +39,11 @@
 								</thead>	
 								<tbody>
 									@foreach($cirugias as $cirugia)
-										
-										<tr>
+										{{-- */($cirugia->urgencias==1) ? $color="#FEE483":$color="";/* --}}										
+										<tr bgcolor="{{$color}}">
 											<td class='font-small'>{{$cirugia->horario}}</td>
 											<td class='font-small'>{{ ($cirugia->sala==4) ? 'Ext':$cirugia->sala }}</td>
+
 											<td class='font-small'>{{$cirugia->paciente->fullname}} <br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}} {{getEdad($cirugia->paciente->fecha_nacimiento)}} AÑOS  ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}</td>
 											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}} <br> 
 												@if(!$cirugia->reprogramada && !$cirugia->suspendida && !$cirugia->tiempo_qx)

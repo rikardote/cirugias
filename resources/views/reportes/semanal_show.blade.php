@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Document</title>
 	<style>
 		 body {
@@ -26,8 +26,9 @@
 				<td>Hora Real</td>
 				<td>Cirugia realizada</td>
 				<td>Hora Final</td>
-				<td>Reprogramada</td>
-				<td>Suspendida</td>
+				<td>R</td>
+				<td>S</td>
+				<td>U</td>
 				<td>Observaciones</td>
 			</thead>
 		</tr>
@@ -45,7 +46,8 @@
 					<td>{{$surgery->hora_final}}</td>
 					<td align="center">{{($surgery->reprogramada ? √:null)}}</td>
 					<td align="center">{{($surgery->suspendida ? √:null)}}</td>
-					<td>{{$surgery->observaciones}}</td>
+					<td align="center">{{($surgery->urgencias ? √:null)}}</td>
+					<td> {{$surgery->observaciones}}</td>
 				</tr>
 			@endforeach
 		</tbody>

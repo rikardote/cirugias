@@ -14,6 +14,8 @@ use App\Anestesiologo;
 
 use \mPDF;
 use Laracasts\Flash\Flash;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 class ProgramacionController extends Controller
@@ -54,8 +56,10 @@ class ProgramacionController extends Controller
     }
     public function store(SurgeryRequests $request)
     {
-    	$surgery = new Surgery($request->all());
+      	$surgery = new Surgery($request->all());
     	$surgery->fecha = fecha_ymd($request->fecha);
+        ($request->urgencias == 1) ? $surgery->urgencias=1:$surgery->urgencias="";
+
     	$surgery->save();
         Flash::success('! Cirugia Agregada !');
     	return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
@@ -93,6 +97,8 @@ class ProgramacionController extends Controller
             $cirugias->medico;
             $cirugias->anestesiologo;
         });
+        
+       
 
         //
         
@@ -150,7 +156,14 @@ class ProgramacionController extends Controller
         $mpdf->WriteHTML($html);
    
         $mpdf->Output($pdfFilePath, "I"); //D
-    
+
+
+        /* Excel::create('surgerys', function($excel) use($surgerys) {
+            $excel->sheet('Sheet 1', function($sheet) use($surgerys) {
+                $sheet->loadView('reportes.semanal_show')->with('surgerys', $surgerys);;
+            });
+        })->export('xls');
+        */
     }
 
     public function reprogramar($id)
