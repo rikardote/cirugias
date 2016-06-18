@@ -102,4 +102,8 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ProgramacionController@suspender',
         'as' => 'cirugia.suspender'
     ]);
+    Route::post('programar_cirugia/{id}/suspender/post', [
+        'uses' => 'ProgramacionController@suspender_post',
+        'as' => 'cirugia.suspender.post'
+    ]);
 });

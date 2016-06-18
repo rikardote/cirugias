@@ -131,7 +131,7 @@ class ProgramacionController extends Controller
     {
         $fecha_inicio = fecha_ymd($request->fecha_inicio);
         $fecha_final = fecha_ymd($request->fecha_final);
-        $surgerys = Surgery::whereBetween('fecha',[$fecha_inicio,$fecha_final])->orderBy('fecha', 'ASC')->get();
+        $surgerys = Surgery::whereBetween('fecha',[$fecha_inicio,$fecha_final])->orderBy('fecha', 'ASC')->orderBy('horario')->get();
         $surgerys->each(function($surgerys) {
             $surgerys->paciente;
             $surgerys->cirugia;
@@ -174,8 +174,6 @@ class ProgramacionController extends Controller
                 ->with('medicos', $medicos)
                 ->with('anestesiologos', $anestesiologos)
                 ->with('cirugias', $cirugias);
-
-        //return view('programar_cirugia.reprogramar')->with('surgery', $surgery);
     }
 
     public function reprogramar_update_store(SurgeryRequests $request, $id)
@@ -191,5 +189,23 @@ class ProgramacionController extends Controller
         $surgery->save();
 
         return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
+    }
+
+    public function suspender($id)
+    {
+        $surgery = Surgery::find($id);
+        $surgery->paciente;
+
+        return view('programar_cirugia.suspender')->with('surgery', $surgery);
+    }
+
+    public function suspender_post(Request $request, $id)
+    {
+        $cirugia = Surgery::find($id);
+        $cirugia->suspendida = 1;
+        $cirugia->observaciones = $request->observaciones;
+        $cirugia->save();
+
+        return redirect()->route('programar_cirugia.index', ['date' => $cirugia->fecha]); 
     }
 }

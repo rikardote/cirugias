@@ -5,7 +5,8 @@
 	{!! Form::label('tiempo_qx', 'Tiempo de QX. Proyectado') !!}
 	{!! Form::number('tiempo_qx', null, [
 		'class' => 'form-control',
-		'required'
+		'required',
+		'id' => 'tiempo_qx'
 	]) !!}
 	</div>
 	<div class="form-group">
@@ -39,7 +40,7 @@
 
 	<div class="form-group">
 	{!! Form::label('observaciones', 'Obsevaciones') !!}
-	{!! Form::text('observaciones', null, [
+	{!! Form::textarea('observaciones', null, [
 		'class' => 'form-control'
 	]) !!}
 	</div>
@@ -67,4 +68,9 @@
 		'timeFormat': 'H:i',
 		'disableTextInput': true
 	});
+</script>
+<script>
+	$(function(){
+  $("#tiempo_qx").val("");
+});
 </script>

@@ -187,8 +187,12 @@ td.ui-datepicker-week-end {
      position: absolute;
       right: 15px;
       display: none;
+      color: black;
     }
     
     .row:hover .hover-btn {
           display: block;
         }
+.label-font{
+  font-size: 10pt;
+}
