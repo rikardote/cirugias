@@ -58,32 +58,28 @@
 			{!! Form::text('phone', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Movil', 
-				'required'
+				'placeholder' => 'Telefono Movil'
 			]) !!}
 			{!! Form::label('phone_casa', 'Telefono Fijo') !!}
 			
 			{!! Form::text('phone_casa', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Fijo', 
-				'required'
+				'placeholder' => 'Telefono Fijo'
 			]) !!}
 			{!! Form::label('address', 'Direccion') !!}
 			
 			{!! Form::text('address', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Direccion', 
-				'required'
+				'placeholder' => 'Direccion'
 			]) !!}
 			{!! Form::label('colonia_id', 'Colonia') !!}
 			
 			{!! Form::text('colonia_id', null, [
 				'id' => 'autocomplete',
 				'class' => 'form-control',
-				'placeholder' => 'Colonia', 
-				'required'
+				'placeholder' => 'Colonia'
 			]) !!}
 
 
