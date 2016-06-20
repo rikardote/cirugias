@@ -48,7 +48,7 @@ class CirugiasController extends Controller
     {
         $cirugia = Cirugia::find($id);
         $cirugia->fill($request->all());
-        dd($request);
+
         $cirugia->save();
         Flash::success('Cirugia editado con exito!');
         return redirect()->route('cirugias.index');
