@@ -107,3 +107,7 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'cirugia.suspender.post'
     ]);
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
