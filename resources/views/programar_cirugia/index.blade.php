@@ -41,31 +41,44 @@
 									@foreach($cirugias as $cirugia)
 										{{-- */($cirugia->urgencias==1) ? $color="#FEE483":$color="";/* --}}										
 										<tr bgcolor="{{$color}}">
-											<td class='font-small'>{{$cirugia->horario}}</td>
-											<td class='font-small'>{{ ($cirugia->sala==4) ? 'Ext':$cirugia->sala }}</td>
-
+											<td class='font-small'>{{ ($cirugia->horario==0) ? 'Pend':$cirugia->horario }}</td>
+											<td class='font-small'>{{ ($cirugia->sala==0) ? 'Pend':$cirugia->sala }}</td>
 											<td class='font-small'>
-											<a data-url="{{ route('programar_cirugia.edit',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>{{$cirugia->paciente->fullname}}
-
-
-											<br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}   ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}</td>
-											 </a>
-											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}} <br> 
-												@if(!$cirugia->reprogramada && !$cirugia->suspendida && !$cirugia->tiempo_qx)
-												<small>
-													<a data-url="{{ route('cirugia.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
-													<a data-url="{{ route('cirugia.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
-													<a data-url="{{ route('cirugia.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
+											@if(!$cirugia->cerrada && !$cirugia->suspendida )
 												
-												@endif
+											
+												<a data-url="{{ route('programar_cirugia.edit',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>{{$cirugia->paciente->fullname}}
+													<br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}   ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}
+ 												</a>
+ 											@else
+ 												{{$cirugia->paciente->fullname}}
+													<br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}   ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}
+																					
+											@endif
+											</td>
+
+											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}} <br> 
+												<small>
+													@if(!$cirugia->cerrada && $cirugia->horario && !$cirugia->suspendida )
+														<a data-url="{{ route('cirugia.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
+													@endif
+													@if(!$cirugia->cerrada && !$cirugia->suspendida )
+														<a data-url="{{ route('cirugia.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
+													
+														<a data-url="{{ route('cirugia.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
+													@endif
 												@if($cirugia->cerrada)
 										  		 <strong>CERRADA</strong>
 										  		@endif
+										  		@if($cirugia->suspendida)
+										  		 <strong>SUSPENDIDA</strong>
+										  		@endif
 											</td>
-											<td class="hover-btn">
+											@if(!$cirugia->suspendida)
+												<td class="hover-btn">
 									     		<a href="{{route('programar_cirugia.destroy', $cirugia->id)}}" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
-										  	</td>
-
+										  	</td>		
+										  @endif
 										</tr>
 
 									@endforeach

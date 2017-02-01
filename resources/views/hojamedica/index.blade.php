@@ -48,10 +48,10 @@
 											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{ ($cirugia->anestesiologo->fullname=='SIN ASIGNACION AUN') ? '':$cirugia->anestesiologo->fullname }} <br>
 												
 												<small>
-													@if(!$cirugia->cerrada && $cirugia->horario)
+													@if(!$cirugia->cerrada && $cirugia->horario && !$cirugia->suspendida )
 														<a data-url="{{ route('hojamedica.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
 													@endif
-													@if(!$cirugia->cerrada)
+													@if(!$cirugia->cerrada && !$cirugia->suspendida )
 														<a data-url="{{ route('hojamedica.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
 													
 														<a data-url="{{ route('hojamedica.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
@@ -59,8 +59,11 @@
 												@if($cirugia->cerrada)
 										  		 <strong>CERRADA</strong>
 										  		@endif
+										  		@if($cirugia->suspendida)
+										  		 <strong>SUSPENDIDA</strong>
+										  		@endif
 											</td>
-											@if(!$cirugia->reprogramada && !$cirugia->suspendida && !$cirugia->tiempo_qx)
+											@if(!$cirugia->suspendida)
 												<td class="hover-btn">
 									     		<a href="{{route('hojamedica.destroy', $cirugia->id)}}" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
 										  	</td>		

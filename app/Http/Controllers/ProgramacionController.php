@@ -71,12 +71,16 @@ class ProgramacionController extends Controller
 
     public function update(Request $request , $id)
     {
-        $surgery = Surgery::find($id);
-        $surgery->cirugia_realizada = $request->cirugia_realizada;
-        $surgery->tiempo_qx = $request->tiempo_qx;
-        $surgery->hora_inicio = $request->hora_inicio;
-        $surgery->hora_final = $request->hora_final;
-        $surgery->observaciones = $request->observaciones;
+       $surgery = Surgery::find($id);
+        $surgery->fill($request->all());
+        //$surgery->cirugia_realizada = $request->cirugia_realizada;
+        //$surgery->tiempo_qx = $request->tiempo_qx;
+        //$surgery->hora_inicio = $request->hora_inicio;
+        //$surgery->hora_final = $request->hora_final;
+        //$surgery->observaciones = $request->observaciones;
+        
+        $surgery->cerrada = 1;
+
         $surgery->save();
 
         return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
@@ -193,17 +197,17 @@ class ProgramacionController extends Controller
                 ->with('cirugias', $cirugias);
     }
 
-    public function reprogramar_update_store(SurgeryRequests $request, $id)
+    public function reprogramar_update_store(Request $request, $id)
     {
-        $cirugia = Surgery::find($id);
-        $cirugia->reprogramada = 1;
-        $cirugia->observaciones = $request->observaciones;
-        $cirugia->anestesiologo_id = 7;
-        $cirugia->save();
-
-        $surgery = new Surgery($request->all());
+        $surgery = Surgery::find($id);
+        $surgery->reprogramada = 1;
+        $surgery->horario = 0;
+        $surgery->anestesiologo_id = 7;
         $surgery->fecha = fecha_ymd($request->fecha);
-        $surgery->observaciones = "";
+        $surgery->fecha_repro = fecha_ymd($request->fecha_repro);
+        $surgery->observaciones = $request->observaciones;
+        $surgery->medico_id = $request->medico_id;
+         
         $surgery->save();
 
         return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
@@ -257,8 +261,6 @@ class ProgramacionController extends Controller
     }
 
     public function reporte_rq(){
-    //    return view('reportes.rq');
-        
         $surgerys = Surgery::where('reprogramada', '=', 1)->orderBy('fecha', 'ASC')->get();
         $surgerys->each(function($surgerys) {
             $surgerys->paciente;
@@ -281,33 +283,6 @@ class ProgramacionController extends Controller
     
     }
 
-    public function reporte_rq_pdf(Request $request)
-    {
-        $fecha_inicio = fecha_ymd($request->fecha_inicio);
-        $fecha_final = fecha_ymd($request->fecha_final);
-
-        $surgerys = Surgery::whereBetween('fecha',[$fecha_inicio,$fecha_final])->where('reprogramada', '=', 1)->orderBy('fecha', 'ASC')->orderBy('horario')->get();
-        $surgerys->each(function($surgerys) {
-            $surgerys->paciente;
-            $surgerys->cirugia;
-            $surgerys->medico;
-            $surgerys->anestesiologo;
-        });
-        
-        $mpdf = new mPDF('', 'Legal-L');
-        $header = \View('reportes.header_semanal')->with('date', $fecha_inicio)->with('date2', $fecha_final)->render();
-        $mpdf->SetFooter('Generado el: {DATE j-m-Y}| Programacion de Cirugias | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
-        $html =  \View('reportes.rq_show')->with('surgerys', $surgerys)->with('date', $date)->render();
-        $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
-        $mpdf->setAutoTopMargin = 'stretch';
-        $mpdf->setAutoBottomMargin = 'stretch';
-        $mpdf->setHTMLHeader($header);
-        $mpdf->SetDisplayMode('fullpage');
-        $mpdf->WriteHTML($html);
    
-        $mpdf->Output($pdfFilePath, "I"); //D
-        
- 
-    }
 }
 

@@ -7,32 +7,6 @@
 		])
 	!!}
 </div>
-<div class="form-group">
-	{!! Form::label('horario', 'Horario') !!}
-	
-	{!! Form::text('horario', null, [
-		'id' => 'timepicker',
-		'class' => 'form-control',
-		'placeholder' => 'Ingresa un horario', 
-		'required'
-	]) !!}
-</div>
-
-<div class="form-group">
-	{!! Form::label('sala', 'Sala') !!}
-	{!! Form::select('sala', ['1' => 'Sala 1', '2' => 'Sala 2', '3' => 'Sala 3'], null, [
-		'class' => 'form-control',
-	    'placeholder' => 'Selecciona una Sala', 
-	    'required'])
-	!!}
-</div>
-<div class="form-group">
-	{!! Form::select('ubicacion', ['HOSP' => 'HOSP', 'EXT' => 'EXT'], null, [
-		'class' => 'form-control',
-	    'placeholder' => 'Selecciona una ubicacion', 
-	    'required'])
-	!!}
-</div>
 
 <div class="form-group">
 	{!! Form::label('medico_id', 'Medico') !!}
@@ -50,14 +24,7 @@
     'required'
   ]) !!}
 </div>
-<div class="form-group">
-	{!! Form::label('anestesiologo_id', 'Anestesiologo') !!}
-	{!! Form::select('anestesiologo_id', $anestesiologos, $surgery->anestesiologo_id, [
-    'class' => 'form-control',
-    'placeholder' => 'Selecciona un Anestesiologo', 
-    'required'
-  ]) !!}
-</div>
+
 <div class="form-group">
 	{!! Form::label('observaciones', 'Observaciones') !!}
 	
@@ -68,6 +35,7 @@
 	]) !!}
 </div>
 {{ Form::hidden('paciente_id', $surgery->paciente_id) }}
+{{ Form::hidden('fecha_repro', $surgery->fecha) }}
 
 <script>
 	$('#timepicker').timepicker({ 
