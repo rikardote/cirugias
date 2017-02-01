@@ -79,13 +79,13 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                               
+                               test <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
                                 
                                    
-                                  
+                                 
                                     <li>
                                         <a href="{{ url('/dianohabil') }}"><i class="fa fa-btn fa fa-cog"></i>Dias no habiles</a>
                                     </li>
@@ -93,8 +93,7 @@
                                         <a href="{{ url('/registrar') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Usuarios</a>
                                     </li>
                                     
-                                  
-                              
+                                 
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
                             </ul>
                         </li>
