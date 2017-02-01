@@ -3,13 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Paciente extends Model
+class Paciente extends Model implements SluggableInterface
 {
     protected $connection = 'mysql-pacientes';
     protected $table = 'pacientes';
 
-          
+    use SluggableTrait;
+
+    protected $sluggable = [
+        'build_from' => 'Fullname',
+        'save_to'    => 'slug',
+    ];
+
     protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat', 'tipo_id', 'gender', 'phone', 'phone_casa', 'address'];
 
     public function setnombresAttribute($value)

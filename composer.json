@@ -15,6 +15,7 @@
         "oriceon/toastr-5-laravel": "dev-master",
         "yajra/laravel-datatables-oracle": "~6.0",
         "mpdf/mpdf": "dev-master@dev",
+        "cviebrock/eloquent-sluggable": "^3.1",
         "doctrine/dbal": "^2.5"
     },
     "require-dev": {

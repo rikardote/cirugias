@@ -160,6 +160,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Vsmoraes\Pdf\PdfServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
 
 
     ],
