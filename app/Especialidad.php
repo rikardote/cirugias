@@ -21,6 +21,11 @@ class Especialidad extends Model {
     {
         $this->attributes['name'] = strtoupper($value);
     }
+
+     public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
     
     
 }

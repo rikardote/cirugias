@@ -30,6 +30,10 @@ class ProgramacionController extends Controller
 
     public function index()
     {
+        if (!\Auth::user()->admin()) {
+            return redirect()->route('hojamedica.index');
+        }
+        
     	if (isset($_GET["date"])) {
             $date = $_GET["date"];
         }else {

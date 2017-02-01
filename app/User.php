@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password', 'type', 'medico_id'
     ];
 
     /**
@@ -23,4 +23,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function especialidades()
+    {
+        return $this->belongsToMany('App\Especialidad')->withTimestamps();
+    }
+
+    public function admin() 
+    {
+        return $this->type === 'admin';
+    }
+    public function setnameAttribute($value)
+    {
+        $this->attributes['name'] = strtoupper($value);
+    }
+    public function medico()
+    {
+        return $this->belongsTo('App\Medico', 'medico_id');
+    }
 }

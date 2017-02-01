@@ -78,19 +78,11 @@
 			]) !!}
 			{!! Form::label('colonia_id', 'Colonia') !!}
 			
-			
-
-			{!! Form::text('colonia_id',  isset($paciente->colonia->colonia) ? strtoupper($paciente->colonia->colonia):null, [
-				'id' => 'autocomplete',
-				'class' => 'form-control',
-				'placeholder' => 'Colonia'
-			]) !!}
-			
+	
 			{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
 			<br>
 			{!! Form::text('fecha_nacimiento', $paciente->fecha_nacimiento, [
 				'class' => 'form-control',
-				'required',
 				'id' => 'dob',
 				'style' => 'width: 10em;'
 			]) !!}

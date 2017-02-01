@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    
 
-    <title>Laravel</title>
+    <title>Sistemas Programacion de Cirugias</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
+    
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/jquery-bootstrap-datepicker.css') }}">
+
+    
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/themesolar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datetextentry/datetextentry.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/timepicker/jquery.timepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/chosen-bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/sweetalert/dist/sweetalert.css') }}">
+    @yield('css')
+    
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
 </head>
 <body id="app-layout">
     @include('layouts.nav')
@@ -48,8 +55,8 @@
 <footer class="footer">
     <p class="text-muted text-white"> &copy;  {{date('Y')}} ISSSTE BAJA CALIFORNIA Por: Hector Ricardo Fuentes Armenta Ext. 53040</p>
 </footer>
-</body>
- <script src="{{ asset('plugins/jquery/js/jquery.js') }}"></script>
+    <!-- JavaScripts -->
+    <script src="{{ asset('plugins/jquery/js/jquery.js') }}"></script>
     
     <script src="{{ asset('plugins/datepicker/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('plugins/datepicker/js/ui.datepicker-es-MX.js') }}"></script>
@@ -62,9 +69,8 @@
     <script src="{{ asset('plugins/toastr/js/toastr.min.js') }}"></script>
     <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js') }}"></script>
    
-    
     @yield('js')
-
+   
+  
+</body>
 </html>
-
-

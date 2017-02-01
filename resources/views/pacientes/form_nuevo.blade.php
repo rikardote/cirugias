@@ -78,21 +78,12 @@
 				'placeholder' => 'Direccion', 
 				'required'
 			]) !!}
-			{!! Form::label('colonia_id', 'Colonia') !!}
 			
-			{!! Form::text('colonia_id', null, [
-				'id' => 'autocomplete',
-				'class' => 'form-control',
-				'placeholder' => 'Colonia', 
-				'required'
-			]) !!}
-
 
 			{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
 			<br>
 			{!! Form::text('fecha_nacimiento',null, [
 				'class' => 'form-control',
-				'required',
 				'id' => 'dob',
 				'style' => 'width: 10em;'
 			]) !!}

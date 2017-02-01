@@ -10,7 +10,7 @@ class Paciente extends Model
     protected $table = 'pacientes';
 
           
-    protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat', 'tipo_id', 'gender', 'phone', 'phone_casa', 'address', 'colonia_id'];
+    protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat', 'tipo_id', 'gender', 'phone', 'phone_casa', 'address'];
 
     public function setnombresAttribute($value)
     {

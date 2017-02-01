@@ -106,7 +106,72 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ProgramacionController@suspender_post',
         'as' => 'cirugia.suspender.post'
     ]);
+
+    // Registro de usuarios
+    Route::resource('registrar', 'RegistroController');   
+    Route::get('registrar/{id}/destroy', [
+        'uses' => 'RegistroController@destroy',
+        'as' => 'registrar.destroy'
+    ]);
+
+    // Hoja medica
+
+    // Rutas Programacion de cirugias //
+    Route::resource('hojamedica', 'HojamedicaController',
+         ['except' => ['destroy']]);
+    Route::get('hojamedica/{id}/destroy', [
+        'uses' => 'HojamedicaController@destroy',
+        'as' => 'hojamedica.destroy'
+    ]);
+    Route::get('hojamedica/{date}/nueva', [
+        'uses' => 'HojamedicaController@nueva',
+        'as' => 'hojamedica.nueva'
+    ]);
+    Route::get('hojamedica/{date}/paciente', [
+        'uses' => 'SearchPacientesEnHojaController@index',
+        'as' => 'hojamedica.pacientes.search'
+    ]);
+    Route::get('hojamedica/{date}/pdf', [
+        'uses' => 'HojamedicaController@pdf',
+        'as' => 'reportes.diarias.pdf'
+    ]);
+    Route::get('hojamedica/reporte_semanal/show', [
+        'uses' => 'HojamedicaController@reporte_semanal',
+        'as' => 'reportes.semanal'
+    ]);
+    Route::post('hojamedica/reporte_semanal/show', [
+        'uses' => 'HojamedicaController@reporte_semanal_pdf',
+        'as' => 'reportes.semanal.pdf'
+    ]);
+    Route::get('hojamedica/{id}/realizada', [
+        'uses' => 'ProgramacionController@realizada',
+        'as' => 'hojamedica.realizada'
+    ]);
+    Route::get('hojamedica/{id}/reprogramar', [
+        'uses' => 'HojamedicaController@reprogramar',
+        'as' => 'hojamedica.reprogramar'
+    ]);
+    Route::post('hojamedica/{id}/reprogramar/update/store', [
+        'uses' => 'HojamedicaController@reprogramar_update_store',
+        'as' => 'hojamedica.r_u_e'
+    ]);
+    Route::get('hojamedica/{id}/suspender', [
+        'uses' => 'HojamedicaController@suspender',
+        'as' => 'hojamedica.suspender'
+    ]);
+    Route::post('hojamedica/{id}/suspender/post', [
+        'uses' => 'HojamedicaController@suspender_post',
+        'as' => 'hojamedica.suspender.post'
+    ]);
+
+
+   
+
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
 
 Route::auth();
 

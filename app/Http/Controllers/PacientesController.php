@@ -19,7 +19,7 @@ class PacientesController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index()
@@ -65,11 +65,19 @@ class PacientesController extends Controller
     public function store(PacientesRequest $request)
     {
         $paciente = new Paciente($request->all());
-        $paciente->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
+        if ($request->fecha_nacimiento != null) {
+            $paciente->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
+        }
+        else{
+            $paciente->fecha_nacimiento = 0;
+        }
+
+        
         $paciente->save();
 
         Flash::success('Paciente registrado con exito!');
         return redirect()->route('pacientes.index');
+        
     }  
 
     public function destroy($id)

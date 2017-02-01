@@ -19,7 +19,7 @@
 
 <div class="form-group">
 	{!! Form::label('sala', 'Sala') !!}
-	{!! Form::select('sala', ['1' => 'Sala 1', '2' => 'Sala 2', '3' => 'Sala 3'], null, [
+	{!! Form::select('sala', ['1' => 'Sala 1', '2' => 'Sala 2', '3' => 'Sala 3', '4' => 'Sala 4'], null, [
 		'class' => 'form-control',
 	    'placeholder' => 'Selecciona una Sala', 
 	    'required'])

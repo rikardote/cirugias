@@ -67,9 +67,37 @@
                     
                 </ul>
 
-                 <!-- Right Side Of Navbar -->
+                <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                   
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                       
+                            <li><a href="{{ url('/login') }}">Login</a></li>
+       
+                        <li><a href="{{ url('/register') }}">Registrar</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->medico->Fullname }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                
+                                   
+                                  @if(Auth::user()->admin())
+                                    <li>
+                                        <a href="{{ url('/dianohabil') }}"><i class="fa fa-btn fa fa-cog"></i>Dias no habiles</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/registrar') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Usuarios</a>
+                                    </li>
+                                    
+                                   @endif
+                              
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
+                            </ul>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

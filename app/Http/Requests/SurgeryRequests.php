@@ -30,8 +30,6 @@ class SurgeryRequests extends Request
             'cirugia_id' => 'required',
             'sala' => 'required',
             'horario' => 'required',
-            'fecha' => 'required',
-
         ];
     }
 }

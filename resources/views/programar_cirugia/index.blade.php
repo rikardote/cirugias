@@ -44,7 +44,12 @@
 											<td class='font-small'>{{$cirugia->horario}}</td>
 											<td class='font-small'>{{ ($cirugia->sala==4) ? 'Ext':$cirugia->sala }}</td>
 
-											<td class='font-small'>{{$cirugia->paciente->fullname}} <br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}} {{getEdad($cirugia->paciente->fecha_nacimiento)}} AÑOS  ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}</td>
+											<td class='font-small'>
+											<a data-url="{{ route('programar_cirugia.edit',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>{{$cirugia->paciente->fullname}}
+
+
+											<br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}} {{getEdad($cirugia->paciente->fecha_nacimiento)}} AÑOS  ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}</td>
+											 </a>
 											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}} <br> 
 												@if(!$cirugia->reprogramada && !$cirugia->suspendida && !$cirugia->tiempo_qx)
 												<small>
@@ -62,11 +67,7 @@
 												</small>
 												@endif
 											</td>
-											@if(!$cirugia->reprogramada && !$cirugia->suspendida && !$cirugia->tiempo_qx)
-												<td class="hover-btn">
-									     		<a href="{{route('programar_cirugia.destroy', $cirugia->id)}}" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
-										  	</td>		
-										  @endif
+											
 										</tr>
 
 									@endforeach
