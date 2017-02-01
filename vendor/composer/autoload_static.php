@@ -1023,6 +1023,7 @@ class ComposerStaticInit4e1239a880ab5693a701d69cd07efefd
         'Text_Renderer' => __DIR__ . '/..' . '/dompdf/dompdf/include/text_renderer.cls.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UCDN' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ucdn.php',
+        'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
         'bmp' => __DIR__ . '/..' . '/mpdf/mpdf/classes/bmp.php',
         'cssmgr' => __DIR__ . '/..' . '/mpdf/mpdf/classes/cssmgr.php',
         'directw' => __DIR__ . '/..' . '/mpdf/mpdf/classes/directw.php',

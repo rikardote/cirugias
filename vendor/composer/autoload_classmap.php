@@ -680,6 +680,7 @@ return array(
     'Text_Renderer' => $vendorDir . '/dompdf/dompdf/include/text_renderer.cls.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'UCDN' => $vendorDir . '/mpdf/mpdf/classes/ucdn.php',
+    'UserSeeder' => $baseDir . '/database/seeds/UserSeeder.php',
     'bmp' => $vendorDir . '/mpdf/mpdf/classes/bmp.php',
     'cssmgr' => $vendorDir . '/mpdf/mpdf/classes/cssmgr.php',
     'directw' => $vendorDir . '/mpdf/mpdf/classes/directw.php',
