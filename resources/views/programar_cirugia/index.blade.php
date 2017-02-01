@@ -48,7 +48,7 @@
 											<a data-url="{{ route('programar_cirugia.edit',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>{{$cirugia->paciente->fullname}}
 
 
-											<br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}} {{getEdad($cirugia->paciente->fecha_nacimiento)}} AÑOS  ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}</td>
+											<br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}   ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}</td>
 											 </a>
 											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}} <br> 
 												@if(!$cirugia->reprogramada && !$cirugia->suspendida && !$cirugia->tiempo_qx)
@@ -67,7 +67,9 @@
 												</small>
 												@endif
 											</td>
-											
+											<td class="hover-btn">
+									     		<a href="{{route('programar_cirugia.destroy', $cirugia->id)}}" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+										  	</td>
 										</tr>
 
 									@endforeach
