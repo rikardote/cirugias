@@ -63,7 +63,7 @@
 										  		 <strong>SUSPENDIDA</strong>
 										  		@endif
 											</td>
-											@if(!$cirugia->suspendida)
+											@if(!$cirugia->cerrada && !$cirugia->suspendida)
 												<td class="hover-btn">
 									     		<a href="{{route('hojamedica.destroy', $cirugia->id)}}" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
 										  	</td>		
