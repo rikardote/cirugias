@@ -44,25 +44,21 @@
 											<td class='font-small'>{{ ($cirugia->horario==0) ? 'Pend':$cirugia->horario }}</td>
 											<td class='font-small'>{{ ($cirugia->sala==0) ? 'Pend':$cirugia->sala }}</td>
 
-											<td class='font-small'>{{$cirugia->paciente->fullname}} <br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}  ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}</td>
-											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{ ($cirugia->anestesiologo->fullname=='SIN ASIGNACION AUN') ? '':$cirugia->anestesiologo->fullname }} <br> 
-												@if(!$cirugia->reprogramada && !$cirugia->suspendida && !$cirugia->tiempo_qx)
+											<td class='font-small'>{{$cirugia->paciente->fullname}} <br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}  ({{$cirugia->ubicacion}})</td>
+											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{ ($cirugia->anestesiologo->fullname=='SIN ASIGNACION AUN') ? '':$cirugia->anestesiologo->fullname }} <br>
+												
 												<small>
-													@if($cirugia->horario != 0)
-													<a data-url="{{ route('hojamedica.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
+													@if(!$cirugia->cerrada && $cirugia->horario)
+														<a data-url="{{ route('hojamedica.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
 													@endif
-													<a data-url="{{ route('hojamedica.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
-													<a data-url="{{ route('hojamedica.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
-												@else
-													@if($cirugia->reprogramada)
-														<strong>¡ REPROGRAMADA !</strong>
-													@elseif($cirugia->suspendida)
-														<strong>¡ SUSPENDIDA !</strong>
-													@elseif($cirugia->tiempo_qx)
-														<strong>¡ CERRADA !	</strong>
+													@if(!$cirugia->cerrada)
+														<a data-url="{{ route('hojamedica.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
+													
+														<a data-url="{{ route('hojamedica.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
 													@endif
-												</small>
-												@endif
+												@if($cirugia->cerrada)
+										  		 <strong>CERRADA</strong>
+										  		@endif
 											</td>
 											@if(!$cirugia->reprogramada && !$cirugia->suspendida && !$cirugia->tiempo_qx)
 												<td class="hover-btn">

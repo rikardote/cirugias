@@ -39,8 +39,8 @@
 	</div>
 
 	<div class="form-group">
-	{!! Form::label('observaciones', 'Obsevaciones') !!}
-	{!! Form::textarea('observaciones', null, [
+	{!! Form::label('observaciones', 'Observaciones') !!}
+	{!! Form::textarea('observaciones', "", [
 		'class' => 'form-control'
 	]) !!}
 	</div>

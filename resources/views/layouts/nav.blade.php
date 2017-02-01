@@ -62,6 +62,7 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{route('reportes.semanal')}}">Reporte Semanal</a></li>
+                            <li><a href="{{route('reportes.rq')}}">Reporte Rezago Quirúrgico</a></li>
                         </ul>
                     </li>
                     

@@ -63,7 +63,7 @@ class ProgramacionController extends Controller
       	$surgery = new Surgery($request->all());
     	$surgery->fecha = fecha_ymd($request->fecha);
         ($request->urgencias == 1) ? $surgery->urgencias=1:$surgery->urgencias="";
-
+        $surgery->anestesiologo_id = 7;
     	$surgery->save();
         Flash::success('! Cirugia Agregada !');
     	return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
@@ -198,6 +198,7 @@ class ProgramacionController extends Controller
         $cirugia = Surgery::find($id);
         $cirugia->reprogramada = 1;
         $cirugia->observaciones = $request->observaciones;
+        $cirugia->anestesiologo_id = 7;
         $cirugia->save();
 
         $surgery = new Surgery($request->all());
@@ -225,4 +226,88 @@ class ProgramacionController extends Controller
 
         return redirect()->route('programar_cirugia.index', ['date' => $cirugia->fecha]); 
     }
+
+    public function edit($id) {
+        $surgery = Surgery::find($id);
+        $surgery->cirugia;
+        $surgery->paciente;
+        $surgery->medico;
+        //$surgery->anestesiologo;
+        $medicos = Medico::all()->lists('fullname', 'id')->toArray();
+        asort($medicos);
+
+        $anestesiologos = Anestesiologo::all()->lists('fullname', 'id')->toArray();
+        asort($anestesiologos);
+
+        $cirugias = Cirugia::all()->lists('name', 'id')->toArray();
+        asort($cirugias);
+
+        return view('programar_cirugia.asignarhorarios')
+                ->with('surgery', $surgery)
+                ->with('medicos', $medicos)
+                ->with('anestesiologos', $anestesiologos)
+                ->with('cirugias', $cirugias);
+    }
+    public function updatehorarios(Request $request, $id){
+       $surgery = Surgery::find($id);
+       $surgery->fill($request->all());
+       $surgery->save();
+
+       return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]);
+    }
+
+    public function reporte_rq(){
+    //    return view('reportes.rq');
+        
+        $surgerys = Surgery::where('reprogramada', '=', 1)->orderBy('fecha', 'ASC')->get();
+        $surgerys->each(function($surgerys) {
+            $surgerys->paciente;
+            $surgerys->cirugia;
+            $surgerys->medico;
+        });
+        
+        $mpdf = new mPDF('', 'Letter');
+        $header = \View('reportes.header_rq')->with('date', $fecha_inicio)->with('date2', $fecha_final)->render();
+        $mpdf->SetFooter('Generado el: {DATE j-m-Y}| REZAGO QUIRURGICO | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
+        $html =  \View('reportes.rq_show')->with('surgerys', $surgerys)->with('date', $date)->render();
+        $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
+        $mpdf->setAutoTopMargin = 'stretch';
+        $mpdf->setAutoBottomMargin = 'stretch';
+        $mpdf->setHTMLHeader($header);
+        $mpdf->SetDisplayMode('fullpage');
+        $mpdf->WriteHTML($html);
+   
+        $mpdf->Output($pdfFilePath, "I"); //D
+    
+    }
+
+    public function reporte_rq_pdf(Request $request)
+    {
+        $fecha_inicio = fecha_ymd($request->fecha_inicio);
+        $fecha_final = fecha_ymd($request->fecha_final);
+
+        $surgerys = Surgery::whereBetween('fecha',[$fecha_inicio,$fecha_final])->where('reprogramada', '=', 1)->orderBy('fecha', 'ASC')->orderBy('horario')->get();
+        $surgerys->each(function($surgerys) {
+            $surgerys->paciente;
+            $surgerys->cirugia;
+            $surgerys->medico;
+            $surgerys->anestesiologo;
+        });
+        
+        $mpdf = new mPDF('', 'Legal-L');
+        $header = \View('reportes.header_semanal')->with('date', $fecha_inicio)->with('date2', $fecha_final)->render();
+        $mpdf->SetFooter('Generado el: {DATE j-m-Y}| Programacion de Cirugias | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
+        $html =  \View('reportes.rq_show')->with('surgerys', $surgerys)->with('date', $date)->render();
+        $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
+        $mpdf->setAutoTopMargin = 'stretch';
+        $mpdf->setAutoBottomMargin = 'stretch';
+        $mpdf->setHTMLHeader($header);
+        $mpdf->SetDisplayMode('fullpage');
+        $mpdf->WriteHTML($html);
+   
+        $mpdf->Output($pdfFilePath, "I"); //D
+        
+ 
+    }
 }
+

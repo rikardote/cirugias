@@ -51,6 +51,7 @@ class RegistroController extends Controller
     public function store(RegistroRequest $request){
     	$user = new User($request->all());
     	$user->password = bcrypt($request->password);
+
         $user->save();
 
         //$user->especialidades()->sync($request->especialidades);

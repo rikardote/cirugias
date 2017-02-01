@@ -28,6 +28,7 @@
 	]) !!}
 </div>
 {{ Form::hidden('paciente_id', $surgery->paciente_id) }}
+{{ Form::hidden('fecha_repro', $surgery->fecha) }}
 
 <script>
 	$('#timepicker').timepicker({ 

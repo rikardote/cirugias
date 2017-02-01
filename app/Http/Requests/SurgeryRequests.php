@@ -26,10 +26,7 @@ class SurgeryRequests extends Request
         return [
             'paciente_id' => 'required',
             'medico_id' => 'required',
-            'anestesiologo_id' => 'required',
             'cirugia_id' => 'required',
-            'sala' => 'required',
-            'horario' => 'required',
         ];
     }
 }

@@ -56,20 +56,16 @@
 													<a data-url="{{ route('cirugia.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
 													<a data-url="{{ route('cirugia.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
 													<a data-url="{{ route('cirugia.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
-												@else
-													@if($cirugia->reprogramada)
-														<strong>¡ REPROGRAMADA !</strong>
-													@elseif($cirugia->suspendida)
-														<strong>¡ SUSPENDIDA !</strong>
-													@elseif($cirugia->tiempo_qx)
-														<strong>¡ CERRADA !	</strong>
-													@endif
-												</small>
+												
 												@endif
+												@if($cirugia->cerrada)
+										  		 <strong>CERRADA</strong>
+										  		@endif
 											</td>
 											<td class="hover-btn">
 									     		<a href="{{route('programar_cirugia.destroy', $cirugia->id)}}" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
 										  	</td>
+
 										</tr>
 
 									@endforeach

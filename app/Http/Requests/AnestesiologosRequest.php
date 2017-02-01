@@ -24,8 +24,8 @@ class AnestesiologosRequest extends Request
     public function rules()
     {
         return [
-            'nombres' => 'min:4|max:20|required',
-            'apellido_pat' => 'min:4|max:20|required',
+            'nombres' => 'min:3|max:20|required',
+            'apellido_pat' => 'min:3|max:20|required',
             'apellido_mat' => 'min:4|max:20|required',
         ];
     }

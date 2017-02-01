@@ -351,6 +351,8 @@ class ComposerStaticInit4e1239a880ab5693a701d69cd07efefd
     public static $classMap = array (
         'Absolute_Positioner' => __DIR__ . '/..' . '/dompdf/dompdf/include/absolute_positioner.cls.php',
         'Abstract_Renderer' => __DIR__ . '/..' . '/dompdf/dompdf/include/abstract_renderer.cls.php',
+        'AddCerradaToSurgerys' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_191453_add_cerrada_to_surgerys.php',
+        'AddFechaReprogramadaToSurgeries' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_185524_add_fecha_reprogramada_to_surgeries.php',
         'AddHospExtToSurgerys' => __DIR__ . '/../..' . '/database/migrations/2016_06_16_125822_add_hosp_ext_to_surgerys.php',
         'AddMedicoIdToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_105944_add_medico_id_to_users_table.php',
         'AddTypeToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_093121_add_type_to_users_table.php',

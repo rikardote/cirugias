@@ -70,6 +70,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ProgramacionController@nueva',
         'as' => 'programar_cirugia.nueva'
     ]);
+    Route::patch('programar_cirugia/{id}/updatehorarios', [
+        'uses' => 'ProgramacionController@updatehorarios',
+        'as' => 'programar_cirugia.updatehorarios'
+    ]);
     Route::get('programar_cirugia/{date}/paciente', [
         'uses' => 'SearchPacientesController@index',
         'as' => 'pacientes.search'
@@ -81,6 +85,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('programar_cirugia/reporte_semanal/show', [
         'uses' => 'ProgramacionController@reporte_semanal',
         'as' => 'reportes.semanal'
+    ]);
+    Route::get('programar_cirugia/reporte_rq/show', [
+        'uses' => 'ProgramacionController@reporte_rq',
+        'as' => 'reportes.rq'
+    ]);
+    Route::post('programar_cirugia/reporte_rq/show', [
+        'uses' => 'ProgramacionController@reporte_rq_pdf',
+        'as' => 'reportes.rq.pdf'
     ]);
     Route::post('programar_cirugia/reporte_semanal/show', [
         'uses' => 'ProgramacionController@reporte_semanal_pdf',
@@ -144,7 +156,7 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'reportes.semanal.pdf'
     ]);
     Route::get('hojamedica/{id}/realizada', [
-        'uses' => 'ProgramacionController@realizada',
+        'uses' => 'HojamedicaController@realizada',
         'as' => 'hojamedica.realizada'
     ]);
     Route::get('hojamedica/{id}/reprogramar', [

@@ -61,3 +61,12 @@ function getCirugia($cirugia_realizada)
   
   return $c_realizada->name;
 }
+function check_rezago($fecha, $fecha_repro) {
+   $fecha = Carbon::parse($fecha);
+   $fecha_repro = Carbon::parse($fecha_repro);
+   $dias = $fecha->diffInDays($fecha_repro);  
+
+   if ($dias > 21) {
+    return $dias;         
+   }
+}

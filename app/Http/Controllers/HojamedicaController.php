@@ -55,17 +55,23 @@ class HojamedicaController extends Controller
     	return redirect()->route('hojamedica.index', ['date' => $surgery->fecha]); 
     }
 
-    public function update(Request $request , $id)
+    public function update(Request $request, $id)
     {
+
         $surgery = Surgery::find($id);
-        $surgery->cirugia_realizada = $request->cirugia_realizada;
-        $surgery->tiempo_qx = $request->tiempo_qx;
-        $surgery->hora_inicio = $request->hora_inicio;
-        $surgery->hora_final = $request->hora_final;
-        $surgery->observaciones = $request->observaciones;
+        $surgery->fill($request->all());
+        //$surgery->cirugia_realizada = $request->cirugia_realizada;
+        //$surgery->tiempo_qx = $request->tiempo_qx;
+        //$surgery->hora_inicio = $request->hora_inicio;
+        //$surgery->hora_final = $request->hora_final;
+        //$surgery->observaciones = $request->observaciones;
+        
+        $surgery->cerrada = 1;
+
         $surgery->save();
 
         return redirect()->route('hojamedica.index', ['date' => $surgery->fecha]); 
+        
     }
 
     public function destroy($id)
@@ -113,6 +119,7 @@ class HojamedicaController extends Controller
         $surgery->paciente;
         $surgery->medico;
         $surgery->anestesiologo;
+
         $procedimientos = Cirugia::all()->lists('name', 'id')->toArray();
         asort($procedimientos);
 
@@ -163,7 +170,7 @@ class HojamedicaController extends Controller
         $surgery->paciente;
         $surgery->medico;
         $surgery->anestesiologo;
-        
+
         $cirugias = Cirugia::all()->lists('name', 'id')->toArray();
         asort($cirugias);
 
@@ -179,9 +186,11 @@ class HojamedicaController extends Controller
         $surgery->horario = 0;
         $surgery->anestesiologo_id = 7;
         $surgery->fecha = fecha_ymd($request->fecha);
+        $surgery->fecha_repro = fecha_ymd($request->fecha_repro);
         $surgery->observaciones = $request->observaciones;
         $medico_id = \Auth::user()->medico_id;
         $surgery->medico_id = $medico_id;
+
         $surgery->save();
 
         return redirect()->route('hojamedica.index', ['date' => $surgery->fecha]); 
@@ -204,4 +213,6 @@ class HojamedicaController extends Controller
 
         return redirect()->route('hojamedica.index', ['date' => $cirugia->fecha]); 
     }
+
+
 }

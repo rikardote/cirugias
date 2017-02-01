@@ -6,25 +6,7 @@
 		'readonly'
 	]) !!}
 </div>
-<div class="form-group">
-	{!! Form::label('horario', 'Horario') !!}
-	
-	{!! Form::text('horario', null, [
-		'id' => $paciente->rfc.$paciente->id,
-		'class' => 'form-control',
-		'placeholder' => 'Ingresa un horario', 
-		'required'
-	]) !!}
-</div>
 
-<div class="form-group">
-	{!! Form::label('sala', 'Sala') !!}
-	{!! Form::select('sala', ['1' => 'Sala 1', '2' => 'Sala 2', '3' => 'Sala 3', '4' => 'Sala 4'], null, [
-		'class' => 'form-control',
-	    'placeholder' => 'Selecciona una Sala', 
-	    'required'])
-	!!}
-</div>
 <div class="form-group">
 	{!! Form::select('ubicacion', ['HOSP' => 'HOSP', 'EXT' => 'EXT'], null, [
 		'class' => 'form-control',
@@ -49,14 +31,7 @@
     'required'
   ]) !!}
 </div>
-<div class="form-group">
-	{!! Form::label('anestesiologo_id', 'Anestesiologo') !!}
-	{!! Form::select('anestesiologo_id', $anestesiologos, null, [
-    'class' => 'form-control',
-    'placeholder' => 'Selecciona un Anestesiologo', 
-    'required'
-  ]) !!}
-</div>
+
 <div class="form-group">
 	{!! Form::label('urgencias', 'Urgencia?') !!}
 	{!!Form::checkbox('urgencias', 1);	 !!}
