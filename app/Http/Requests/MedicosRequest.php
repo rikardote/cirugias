@@ -25,8 +25,8 @@ class MedicosRequest extends Request
     {
         return [
             'nombres' => 'min:4|max:20|required',
-            'apellido_pat' => 'min:4|max:20|required',
-            'apellido_mat' => 'min:4|max:20|required',
+            'apellido_pat' => 'min:1|max:20|required',
+            'apellido_mat' => 'min:1|max:20|required',
         ];
     }
 }
