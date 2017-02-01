@@ -6,7 +6,8 @@
 	{!! Form::number('tiempo_qx', null, [
 		'class' => 'form-control',
 		'required',
-		'id' => 'tiempo_qx'
+		'id' => 'tiempo_qx',
+		'min' => '1'
 	]) !!}
 	</div>
 	<div class="form-group">
