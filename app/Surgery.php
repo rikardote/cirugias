@@ -8,7 +8,7 @@ class Surgery extends Model
 {
     protected $fillable = ['fecha', 'sala', 'paciente_id', 'medico_id', 'anestesiologo_id', 'cirugia_id', 'horario', 
             'ubicacion', 'cirugia_realizada', 'tiempo_qx', 'hora_inicio', 'hora_final', 'observaciones', 'suspendida',
-            'reprogramada', 'urgencias', 'fecha_repro', 'cerrada'];
+            'reprogramada', 'urgencias', 'fecha_repro', 'cerrada', 'edad'];
 
 	protected $table = 'surgerys';
     

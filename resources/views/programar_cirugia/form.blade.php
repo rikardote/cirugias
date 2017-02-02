@@ -16,6 +16,16 @@
 </div>
 
 <div class="form-group">
+	{!! Form::label('edad', 'Edad del paciente') !!}
+	{!! Form::number('edad', null, [
+    	'class' => 'form-control',
+    	'placeholder' => 'Ingrese edad del paciente', 
+    	'min' => '1',
+    	'required'
+  	]) !!}
+</div>
+
+<div class="form-group">
 	{!! Form::label('medico_id', 'Medico') !!}
 	{!! Form::select('medico_id', $medicos, null, [
     'class' => 'form-control',

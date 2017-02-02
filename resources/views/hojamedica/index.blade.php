@@ -44,7 +44,9 @@
 											<td class='font-small'>{{ ($cirugia->horario==0) ? 'Pend':$cirugia->horario }}</td>
 											<td class='font-small'>{{ ($cirugia->sala==0) ? 'Pend':$cirugia->sala }}</td>
 
-											<td class='font-small'>{{$cirugia->paciente->fullname}} <br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}  ({{$cirugia->ubicacion}})</td>
+											<td class='font-small'>{{$cirugia->paciente->fullname}} 
+												<br> <small>{{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}  ({{$cirugia->ubicacion}}) {{ ($cirugia->edad !=null ) ? $cirugia->edad." AÑOS":""  }}</small>
+											</td>
 											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{ ($cirugia->anestesiologo->fullname=='SIN ASIGNACION AUN') ? '':$cirugia->anestesiologo->fullname }} <br>
 												
 												<small>

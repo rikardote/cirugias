@@ -48,11 +48,13 @@
 												
 											
 												<a data-url="{{ route('programar_cirugia.edit',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>{{$cirugia->paciente->fullname}}
-													<br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}   ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}
+													<br> <small>{{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}   ({{$cirugia->ubicacion}}) {{ ($cirugia->edad !=null ) ? $cirugia->edad." AÑOS":""  }}</small>
+													<br> {{$cirugia->medico->fullname}}
  												</a>
  											@else
  												{{$cirugia->paciente->fullname}}
-													<br> {{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}   ({{$cirugia->ubicacion}})<br> {{$cirugia->medico->fullname}}
+													<br> <small>{{$cirugia->paciente->rfc}} /{{$cirugia->paciente->tipo->code}}   ({{$cirugia->ubicacion}}) {{ ($cirugia->edad !=null ) ? $cirugia->edad." AÑOS":""  }}</small>
+													<br> {{$cirugia->medico->fullname}}
 																					
 											@endif
 											</td>
