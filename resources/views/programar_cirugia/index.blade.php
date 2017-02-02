@@ -62,17 +62,17 @@
 											<td class='font-small'>{{$cirugia->cirugia->name}} <br><br> {{$cirugia->anestesiologo->fullname}} <br> 
 												<small>
 													@if(!$cirugia->cerrada && $cirugia->horario && !$cirugia->suspendida )
-														<a data-url="{{ route('cirugia.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
+														<a data-url="{{ route('cirugia.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen label label-info" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
 													@endif
 													@if(!$cirugia->cerrada && !$cirugia->suspendida )
-														<a data-url="{{ route('cirugia.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
+														<a data-url="{{ route('cirugia.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen label label-success" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
 													
-														<a data-url="{{ route('cirugia.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
+														<a data-url="{{ route('cirugia.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen label label-danger" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
 													@endif
 												@if($cirugia->cerrada)
 										  		 <strong>CERRADA</strong>
 										  		 <div class="pull pull-right">
-										  		 	<a href="{{ route('cirugia.abrir',[$cirugia->id]) }}">Abrir</a>
+										  		 	<a class="label label-warning" href="{{ route('cirugia.abrir',[$cirugia->id]) }}">Abrir</a>
 										  		 </div>
 										  		@endif
 										  		@if($cirugia->suspendida)
