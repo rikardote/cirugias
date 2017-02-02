@@ -11,6 +11,16 @@
 </div>
 
 <div class="form-group">
+	{!! Form::label('edad', 'Edad del paciente') !!}
+	{!! Form::number('edad', ($surgery->edad != null ? $surgery->edad:""), [
+    	'class' => 'form-control',
+    	'placeholder' => 'Ingrese edad del paciente', 
+    	'min' => '1',
+    	'required'
+  	]) !!}
+</div>
+
+<div class="form-group">
 	{!! Form::label('sala', 'Sala') !!}
 	{!! Form::select('sala', ['1' => 'Sala 1', '2' => 'Sala 2', '3' => 'Sala 3', '4' => 'Sala 4'], null, [
 		'class' => 'form-control',
