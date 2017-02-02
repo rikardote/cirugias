@@ -40,9 +40,20 @@
 	</div>
 
 	<div class="form-group">
-	{!! Form::label('observaciones', 'Obsevaciones') !!}
+		{!! Form::label('anestesiologo_id', 'Anestesiologo') !!}
+		{!! Form::select('anestesiologo_id', $anestesiologos,null, [
+	    'class' => 'form-control',
+	    'placeholder' => 'Selecciona un Anestesiologo', 
+	    'required'
+	  	]) !!}
+	</div>
+
+	<div class="form-group">
+	{!! Form::label('observaciones', 'Observaciones') !!}
 	{!! Form::textarea('observaciones', null, [
-		'class' => 'form-control'
+		'class' => 'form-control',
+		'rows' => 2, 
+		'cols' => 40
 	]) !!}
 	</div>
 

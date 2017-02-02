@@ -134,7 +134,12 @@ class ProgramacionController extends Controller
         $procedimientos = Cirugia::all()->lists('name', 'id')->toArray();
         asort($procedimientos);
 
-        return view('programar_cirugia.form_realizada')->with('surgery', $surgery)->with('procedimientos', $procedimientos);
+        $anestesiologos = Anestesiologo::all()->lists('fullname', 'id')->toArray();
+        asort($anestesiologos);
+
+        return view('programar_cirugia.form_realizada')->with('surgery', $surgery)
+                                                       ->with('procedimientos', $procedimientos)
+                                                       ->with('anestesiologos', $anestesiologos);;
     }
     public function reporte_semanal()
     {

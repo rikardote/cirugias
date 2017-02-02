@@ -123,7 +123,12 @@ class HojamedicaController extends Controller
         $procedimientos = Cirugia::all()->lists('name', 'id')->toArray();
         asort($procedimientos);
 
-        return view('hojamedica.form_realizada')->with('surgery', $surgery)->with('procedimientos', $procedimientos);
+        $anestesiologos = Anestesiologo::all()->lists('fullname', 'id')->toArray();
+        asort($anestesiologos);
+
+        return view('hojamedica.form_realizada')->with('surgery', $surgery)
+                                                ->with('procedimientos', $procedimientos)
+                                                ->with('anestesiologos', $anestesiologos);;
     }
     public function reporte_semanal()
     {
