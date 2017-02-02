@@ -36,9 +36,9 @@
 			@foreach($surgerys as $surgery)
 				<tr>
 					<td>{{fecha_dmy($surgery->fecha)}}</td>
-					<td>{{$surgery->horario}}/{{$surgery->sala}}</td>
+					<td>{{($surgery->horario != null) ? $surgery->horario:""}}/{{($surgery->sala != null) ? $surgery->sala:""}}</td>
 					<td>{{$surgery->cirugia->name}}</td>
-					<td>{{$surgery->tiempo_qx}}</td>
+					<td>{{($surgery->tiempo_qx != null) ? $surgery->tiempo_qx:""}}</td>
 					<td>{{$surgery->medico->fullname}}</td>
 					<td>{{$surgery->anestesiologo->fullname}}</td>
 					<td>{{$surgery->hora_inicio}}</td>

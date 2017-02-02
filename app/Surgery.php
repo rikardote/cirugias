@@ -28,4 +28,8 @@ class Surgery extends Model
     {
         return $this->belongsTo('App\Cirugia');
     }
+    public function setobservacionesAttribute($value)
+    {
+        $this->attributes['observaciones'] = strtoupper($value);
+    }
 }
