@@ -51,12 +51,12 @@
 												
 												<small>
 													@if(!$cirugia->cerrada && $cirugia->horario && !$cirugia->suspendida )
-														<a data-url="{{ route('hojamedica.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
+														<a data-url="{{ route('hojamedica.realizada',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen label label-info" data-toggle ="modal" data-target='#form-modal'>Cerrar</a> | 
 													@endif
 													@if(!$cirugia->cerrada && !$cirugia->suspendida )
-														<a data-url="{{ route('hojamedica.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
+														<a data-url="{{ route('hojamedica.reprogramar',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen label label-success" data-toggle ="modal" data-target='#form-modal'>Reprogramar</a> | 
 													
-														<a data-url="{{ route('hojamedica.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
+														<a data-url="{{ route('hojamedica.suspender',[$cirugia->id]) }}" class="load-form-modal  panelColorGreen label label-danger" data-toggle ="modal" data-target='#form-modal'>Suspender</a>
 													@endif
 												@if($cirugia->cerrada)
 										  		 <strong>CERRADA</strong>

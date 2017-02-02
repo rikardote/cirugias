@@ -78,6 +78,7 @@
 										  		@if($cirugia->suspendida)
 										  		 <strong>SUSPENDIDA</strong>
 										  		@endif
+										  		</small>
 											</td>
 											@if(!$cirugia->cerrada && !$cirugia->suspendida)
 												<td class="hover-btn">
