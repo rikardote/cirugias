@@ -69,6 +69,9 @@
 													@endif
 												@if($cirugia->cerrada)
 										  		 <strong>CERRADA</strong>
+										  		 <div class="pull pull-right">
+										  		 	<a href="{{ route('cirugia.abrir',[$cirugia->id]) }}">Abrir</a>
+										  		 </div>
 										  		@endif
 										  		@if($cirugia->suspendida)
 										  		 <strong>SUSPENDIDA</strong>

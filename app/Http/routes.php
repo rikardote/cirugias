@@ -102,6 +102,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ProgramacionController@realizada',
         'as' => 'cirugia.realizada'
     ]);
+    Route::get('programar_cirugia/{id}/abrir', [
+        'uses' => 'ProgramacionController@abrir',
+        'as' => 'cirugia.abrir'
+    ]);
     Route::get('programar_cirugia/{id}/reprogramar', [
         'uses' => 'ProgramacionController@reprogramar',
         'as' => 'cirugia.reprogramar'
