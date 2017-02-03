@@ -1,10 +1,10 @@
-{!! Form::open(['route' => ['pacientes.store', $slug, $date], 'method' => 'POST']) !!}
+{!! Form::open(['route' => ['admin.pacientes.store', $date], 'method' => 'POST']) !!}
 <div class="row">
 	<div class="col-md-6">
 		<div class="form-group">
 			{!! Form::label('rfc', 'RFC') !!}
 			
-			{!! Form::text('rfc', strtoupper($rfc), [
+			{!! Form::text('rfc', $rfc, [
 				
 				'class' => 'form-control',
 				'placeholder' => 'Ingresar RFC', 
@@ -59,24 +59,21 @@
 			{!! Form::text('phone', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Movil', 
-				'required'
+				'placeholder' => 'Telefono Movil'
 			]) !!}
 			{!! Form::label('phone_casa', 'Telefono Fijo') !!}
 			
 			{!! Form::text('phone_casa', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Fijo', 
-				'required'
+				'placeholder' => 'Telefono Fijo'
 			]) !!}
 			{!! Form::label('address', 'Direccion') !!}
 			
 			{!! Form::text('address', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Direccion', 
-				'required'
+				'placeholder' => 'Direccion'
 			]) !!}
 			
 
@@ -89,17 +86,13 @@
 			]) !!}
 
 			</div>	
-
+				
 		</div>	
-		
 </div>
-<div align="right">
-				{!! Form::submit('Agregar', ['class' => 'btn btn-success']) !!}
+            {!! Form::submit('Registrar', ['class' => 'btn btn-success']) !!}
 
-			</div>	
 			{!!Form::close()!!}	
-
-<script>
+	<script>
 		$('#dob').datetextentry();
 	</script>
 	<script>

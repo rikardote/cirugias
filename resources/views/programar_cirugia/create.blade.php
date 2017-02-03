@@ -43,6 +43,20 @@
 
 @endif
 
+@if(isset($_GET['rfc']))
+	 <br>
+	 <div class="pull pull-right">
+		 <a data-url="{{ route('admin.pacientes.create', [$date, $_GET['rfc']]) }}" class="load-form-modal fa fa-pencil " data-toggle ="modal" data-target='#form-modal'>
+			NUEVO PACIENTE CON RFC: {{strtoupper($_GET['rfc'])}}?
+		 </a> 
+	 </div>
+ 
+ @endif
+
+@include('partials.form-modal', ['title'=>'Nuevo Paciente'])
+@include('partials.confirmation_modal', ['title'=>'Confirmation Modal'])
+
+
 @endsection
 
 @section('js')
@@ -61,3 +75,4 @@
 	
 
 @endsection
+

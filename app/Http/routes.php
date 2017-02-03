@@ -181,6 +181,17 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
 
+    Route::get('programar_cirugia/{date}/nueva_cirugia/paciente/nuevo_paciente/{rfc}', [
+        'uses' => 'SearchPacientesController@NuevoPaciente',
+        'as' => 'admin.pacientes.create'
+    ]);
+    
+    Route::post('programar_cirugia/{date}/nueva_cirugia/paciente/nuevo_paciente/create', [
+        'uses' => 'SearchPacientesController@StorePaciente',
+        'as' => 'admin.pacientes.store'
+    ]);
+
+
    
 
 });
