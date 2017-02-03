@@ -89,7 +89,7 @@
 				
 		</div>	
 </div>
-            {!! Form::submit('Registrar', ['class' => 'btn btn-success']) !!}
+            {!! Form::submit('Registrar', ['class' => 'btn btn-success btn-block']) !!}
 
 			{!!Form::close()!!}	
 	<script>
