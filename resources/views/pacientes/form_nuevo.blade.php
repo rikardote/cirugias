@@ -4,7 +4,7 @@
 		<div class="form-group">
 			{!! Form::label('rfc', 'RFC') !!}
 			
-			{!! Form::text('rfc', $rfc, [
+			{!! Form::text('rfc', strtoupper($rfc), [
 				
 				'class' => 'form-control',
 				'placeholder' => 'Ingresar RFC', 
