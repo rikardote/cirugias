@@ -77,6 +77,9 @@
 										  		@endif
 										  		@if($cirugia->suspendida)
 										  		 <strong>SUSPENDIDA</strong>
+										  		 <div class="pull pull-right">
+										  		 	<a class="label label-warning" href="{{ route('cirugia.abrir',[$cirugia->id]) }}">Abrir</a>
+										  		 </div>
 										  		@endif
 										  		</small>
 											</td>

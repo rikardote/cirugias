@@ -290,14 +290,19 @@ class ProgramacionController extends Controller
 
     public function abrir(Request $request, $id){
         $surgery = Surgery::find($id);
-        $surgery->cerrada = 0;
-        $surgery->cirugia_realizada = $request->cirugia_realizada;
-        $surgery->tiempo_qx = "";
-        $surgery->hora_inicio = "";
-        $surgery->hora_final = "";
-        //$surgery->observaciones = $request->observaciones;
-        
+        if ($surgery->cerrada) {
+            $surgery->cerrada = 0;
+            $surgery->cirugia_realizada = $request->cirugia_realizada;
+            $surgery->tiempo_qx = "";
+            $surgery->hora_inicio = "";
+            $surgery->hora_final = "";
+        }
+        elseif($surgery->suspendida){
+            $surgery->suspendida = 0;
 
+            
+        }
+        
         $surgery->save();
 
         return redirect()->route('programar_cirugia.index', ['date' => $surgery->fecha]); 
