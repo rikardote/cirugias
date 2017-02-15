@@ -64,8 +64,8 @@
 		 <script>
 			$('#{{$paciente->rfc.$paciente->id}}').timepicker({ 
 				'step': 30,
-				'minTime': '7am',
-          		'maxTime': '6pm',
+				'minTime': '1am',
+          		'maxTime': '24pm',
 			    'timeFormat': 'H:i',
 			    'disableTextInput': true
 			});
